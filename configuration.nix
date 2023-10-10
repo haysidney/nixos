@@ -138,6 +138,7 @@ in
      NIXPKGS_ALLOW_UNFREE = "1";
      XL_SECRET_PROVIDER = "FILE"; # For XIVLauncher
      NIXOS_CONFIG = "/nix/persist/home/.config/nixos/configuration.nix";
+     WWW_HOME = "https://lite.duckduckgo.com/lite";
 #    XDG_CURRENT_DESKTOP = "i3";
   };
 
@@ -213,14 +214,6 @@ in
 #      };
 #    };
 #  };
-
-  programs.ssh.extraConfig = ''
-    Host github
-      Hostname github.com
-      IdentityFile /home/sidney/.ssh/id_ed25519_github
-      PreferredAuthentications publickey
-      User git
-  '';
 
   system.copySystemConfiguration = true;
   system.stateVersion = "23.05";
