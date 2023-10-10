@@ -119,20 +119,15 @@ in
     bleeding.xivlauncher
     (unstable-08-19-2023.st.overrideAttrs (oldAttrs: rec {
       patches = [
-        # You can specify local patches
-        #./path/to/local.diff
         /nix/persist/home/.config/nixos/extras/st-font-size.diff
-        # Fetch them directly from `st.suckless.org`
-        # Get sha256 from:
-        # nix-prefetch-url https://st.suckless.org/patches/alpha/st-alpha-20220206-0.8.5.diff
+        /nix/persist/home/.config/nixos/extras/st-delkey.diff
         (fetchpatch {
           url = "https://st.suckless.org/patches/alpha/st-alpha-20220206-0.8.5.diff";
-          sha256 = "10gvwnpbjw49212k25pddji08f4flal0g9rkwpvkay56w8y81r22";
+          sha256 = "01/KBNbBKcFcfbcpMnev/LCzHpON3selAYNo8NUPbF4=";
         })
-        # Or from any other source
         (fetchpatch {
           url = "https://st.suckless.org/patches/w3m/st-w3m-0.8.3.diff";
-          sha256 = "1cwidwqyg6qv68x8bsnxns2h0gy9crd5hs2z99xcd5m0q3agpmlb";
+          sha256 = "nVSG8zuRt3oKQCndzm+3ykuRB1NMYyas0Ne3qCG59ok=";
         })
       ];
     }))
