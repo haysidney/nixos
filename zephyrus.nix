@@ -88,4 +88,34 @@ in
   systemd.tmpfiles.rules = [
     "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.hip}"
   ];
+
+
+
+  systemd = {
+    services.asus-ryzen-power = {
+      enable = true;
+      script = ''
+        if [ -z "$POW" ]; then
+            POW="m"
+        fi
+        if [[ "$POW" == "m" ]]; then
+          /run/current-system/sw/bin/ryzenadj -b 80000
+          /run/current-system/sw/bin/ryzenadj -c 70000
+          /run/current-system/sw/bin/ryzenadj -f 85
+          /run/current-system/sw/bin/asusctl -c 80
+        elif [[ "$POW" == "l" ]]; then
+          /run/current-system/sw/bin/ryzenadj -b 8000
+          /run/current-system/sw/bin/ryzenadj -c 5000
+          /run/current-system/sw/bin/ryzenadj -f 85
+          /run/current-system/sw/bin/asusctl -c 80
+        fi
+      '';
+      serviceConfig = {
+        Type = "simple";
+        Restart = "always";
+        RestartSec = 60;
+      };
+      wantedBy = [ "default.target" ];
+    };
+  };
 }
