@@ -195,26 +195,6 @@ in
 
   virtualisation.docker.enable = true;
 
-#  services = {
-#    syncthing = {
-#      enable = true;
-#      user = "sidney";
-#      systemService = false;
-#      configDir = "/home/sidney/.config/syncthing";
-#      overrideDevices = true;      # overrides any devices added or deleted through the WebUI
-#      overrideFolders = true;      # overrides any folders added or deleted through the WebUI
-#      devices = {
-#        "bolir" = { id = "GHROYUS-VNHV4KO-EFIKLD4-BWWBALY-QENGLTT-VYPNPJV-3S6W4VP-PXIUZQD"; };
-#      };
-#      folders = {
-#        "NixOS Persist" = {        # Name of folder in Syncthing, also the folder ID
-#          path = "/nix/persist";   # Which folder to add to Syncthing
-#          devices = [ "bolir" ];   # Which devices to share the folder with
-#        };
-#      };
-#    };
-#  };
-
   system.copySystemConfiguration = true;
   system.stateVersion = "23.05";
 
@@ -250,7 +230,6 @@ in
         ".config/keyd"
         ".config/spotify"
         ".cache/spotify"
-        ".config/syncthing"
         ".local/state/wireplumber"
       ];
       files = [
