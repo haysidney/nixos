@@ -32,8 +32,41 @@ in
       "/etc/machine-id"
     ];
   };
-  fileSystems."/nix".neededForBoot = true;
-  systemd.tmpfiles.rules = [ "d /mnt 0755 root root" ];
+  systemd.tmpfiles.rules = [
+    "d  /mnt                               0755 root root"
+    "d  /home/sidney/.cache                0755 sidney users"
+    "L+ /home/sidney/.cache/spotify           - sidney users - /nix/persist/home/.cache/spotify"
+    "d  /home/sidney/.config               0755 sidney users"
+    "L+ /home/sidney/.config/nixos            - sidney users - /nix/persist/home/.config/nixos"
+    "L+ /home/sidney/.config/htop             - sidney users - /nix/persist/home/.config/htop"
+    "L+ /home/sidney/.config/1Password        - sidney users - /nix/persist/home/.config/1Password"
+    "L+ /home/sidney/.config/discord          - sidney users - /nix/persist/home/.config/discord"
+    "L+ /home/sidney/.config/keyd             - sidney users - /nix/persist/home/.config/keyd"
+    "L+ /home/sidney/.config/spotify          - sidney users - /nix/persist/home/.config/spotify"
+    "L+ /home/sidney/.config/i3               - sidney users - /nix/persist/home/.config/i3"
+    "L+ /home/sidney/.config/i3status         - sidney users - /nix/persist/home/.config/i3status"
+    "d  /home/sidney/.local                0755 sidney users"
+    "d  /home/sidney/.local/share          0755 sidney users"
+    "L+ /home/sidney/.local/share/Steam       - sidney users - /nix/persist/home/.local/share/Steam"
+    "L+ /home/sidney/.local/share/vulkan      - sidney users - /nix/persist/home/.local/share/vulkan"
+    "d  /home/sidney/.local/state          0755 sidney users"
+    "L+ /home/sidney/.local/state/wireplumber - sidney users - /nix/persist/home/.local/state/wireplumber"
+    "L+ /home/sidney/.steam                   - sidney users - /nix/persist/home/.steam"
+    "L+ /home/sidney/.mozilla                 - sidney users - /nix/persist/home/.mozilla"
+    "L+ /home/sidney/.pki                     - sidney users - /nix/persist/home/.pki"
+    "L+ /home/sidney/.ssh                     - sidney users - /nix/persist/home/.ssh"
+    "L+ /home/sidney/.var                     - sidney users - /nix/persist/home/.var" # Flatpak
+    "L+ /home/sidney/Desktop                  - sidney users - /nix/persist/home/Desktop"
+    "L+ /home/sidney/Documents                - sidney users - /nix/persist/home/Documents"
+    "L+ /home/sidney/Downloads                - sidney users - /nix/persist/home/Downloads"
+    "L+ /home/sidney/Music                    - sidney users - /nix/persist/home/Music"
+    "L+ /home/sidney/Pictures                 - sidney users - /nix/persist/home/Pictures"
+    "L+ /home/sidney/Source                   - sidney users - /nix/persist/home/Source"
+    "L+ /home/sidney/Videos                   - sidney users - /nix/persist/home/Videos"
+    "L+ /home/sidney/.bash_history            - sidney users - /nix/persist/home/.bash_history"
+    "L+ /home/sidney/.xinitrc                 - sidney users - /nix/persist/home/.xinitrc"
+    "L+ /home/sidney/.Xresources              - sidney users - /nix/persist/home/.Xresources"
+  ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -86,9 +119,14 @@ in
   };
 
 #  services.flatpak.enable = true;
+#  xdg.portal = {
+#    enable = true;
+#    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+#  };
   nixpkgs.config.allowUnfree = true;
   nix.extraOptions = "experimental-features = nix-command flakes";
   environment.systemPackages = with pkgs; [
+    vim
     keyd
     htop
     trash-cli
@@ -113,6 +151,8 @@ in
     transmission
     _1password-gui
     spotify
+    bibata-cursors
+    bibata-cursors-translucent
     unstable.gamescope
     bleeding.xivlauncher
     (unstable-08-19-2023.st.overrideAttrs (oldAttrs: rec {
@@ -196,139 +236,64 @@ in
   system.copySystemConfiguration = true;
   system.stateVersion = "23.05";
 
-  programs.fuse.userAllowOther = true; # For impermanence
-  home-manager.users.sidney = { pkgs, ... }: {
-    home.stateVersion = "23.05";
-    imports = [ "${impermanence}/home-manager.nix" ];
-
-    programs = {
-      home-manager.enable = true;
-      git = {
-        enable = true;
-        userName  = "Sidney Hays";
-        userEmail = "tech@sidneyhays.com";
-        extraConfig = {
-          core = {
-          };
-        };
-      };
-      bash = {
-        enable = true;
-        shellAliases = {
-          c="clear";
-          cdd="cd ~";
-          ls="ls --color=auto";
-          ll="ls -la";
-          rm="rmtrash";
-          grep="grep --color=auto";
-          df="df -h";
-          vi="vim";
-          dd="dd status=progress";
-          j="autojump";
-          aq="asciiquarium";
-          mail="neomutt";
-          mb="mbsync -a";
-          i3config="vim ~/.config/i3/config";
-          swayconfig="vim ~/.config/sway/config";
-          t="tmux new-session \; split-window -v \; select-pane -t 1 \; split-window -h \; select-pane -t 1 \; attach";
-          rainfall="python3 /home/sidney/build/rainfall/source/rainfall.py";
-          # NixOS
-          nixconfig="sudo vim ~/.config/nixos/configuration.nix";
-          imperm="sudo tree -x /";
-          archenter="distrobox enter archlinux-latest";
-        };
-      };
-      tmux = {
-        enable = true;
-        extraConfig = ''
-           # Make escape faster for vim.
-           set -sg escape-time 10
-           #setw -g mouse on
-           # Start windows and panes at 1, not 0
-           set -g base-index 1
-           setw -g pane-base-index 1
-           # switch panes using Alt-arrow without prefix
-           bind -n M-Left select-pane -L
-           bind -n M-Right select-pane -R
-           bind -n M-Up select-pane -U
-           bind -n M-Down select-pane -D
-           # split panes using | and -
-           bind \\ split-window -h
-           bind ] split-window -v
-           bind-key -n C-S-Left previous-window
-           #bind-key -n C-S-Right next-window
-           bind -n C-S-Right  run-shell 'current_window=$(tmux display-message -p '#I'); next_window=$(($current_window + 1)); tmux select-window -t :$next_window; if [ "$?" -ne "0" ]; then tmux new-window -t :$next_window; fi'
-        '';
-      };
-      vim = {
-        enable = true;
-        extraConfig = ''
-          set nocp
-          set number
-          set relativenumber
-          syntax on
-          set autoindent
-          set mouse=a
-          set wrap!
-          set showcmd
-          set expandtab
-          set viminfo+=%
-          set wildmenu
-          set wildignorecase
-          set wildmode=list:longest,full
-          set splitbelow
-          set splitright
-          set pastetoggle=<C-x>
-          set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
-          set list
-          vnoremap <C-c> "*y :let @+=@*<CR>
-          nnoremap <C-c> "*yy :let @+=@*<CR>
-          nnoremap <C-p> "+p
-          nnoremap \ :set wrap!<CR>
-          noremap \| :set list!<CR>
-          nnoremap <C-t> :tabnew<CR>
-        '';
+  programs = {
+    steam.enable = true;
+#    git = {
+#      enable = true;
+#      userName  = "Sidney Hays";
+#      userEmail = "tech@sidneyhays.com";
+#      extraConfig = {
+#        core = {
+#        };
+#      };
+#    };
+    bash = {
+      shellAliases = {
+        c="clear";
+        cdd="cd ~";
+        ls="ls --color=auto";
+        ll="ls -la";
+        rm="rmtrash";
+        grep="grep --color=auto";
+        df="df -h";
+        vi="vim";
+        dd="dd status=progress";
+        j="autojump";
+        aq="asciiquarium";
+        mail="neomutt";
+        mb="mbsync -a";
+        i3config="vim ~/.config/i3/config";
+        swayconfig="vim ~/.config/sway/config";
+        t="tmux new-session \; split-window -v \; select-pane -t 1 \; split-window -h \; select-pane -t 1 \; attach";
+        rainfall="python3 /home/sidney/build/rainfall/source/rainfall.py";
+        # NixOS
+        nixconfig="vim ~/.config/nixos/configuration.nix";
+        imperm="sudo tree -x /";
+        archenter="distrobox enter archlinux-latest";
       };
     };
-
-    home.persistence."/nix/persist/home" = {
-      removePrefixDirectory = false;
-      allowOther = true;
-      directories = [
-        ".mozilla"
-        ".pki"
-        ".ssh"
-        ".config/nixos"
-        ".config/htop"
-        ".config/1Password"
-        ".config/discord"
-        ".config/keyd"
-        ".config/spotify"
-        ".cache/spotify"
-        ".local/state/wireplumber"
-        "Desktop"
-        "Documents"
-        "Downloads"
-        "Music"
-        "Pictures"
-        "Source"
-        "Videos"
-      ];
-      files = [
-        ".bash_history"
-        ".xinitrc"
-        ".Xresources"
-        ".config/i3/config"
-        ".config/i3status/config"
-      ];
+    tmux = {
+      enable = true;
+      extraConfig = ''
+         # Make escape faster for vim.
+         set -sg escape-time 10
+         #setw -g mouse on
+         # Start windows and panes at 1, not 0
+         set -g base-index 1
+         setw -g pane-base-index 1
+         # switch panes using Alt-arrow without prefix
+         bind -n M-Left select-pane -L
+         bind -n M-Right select-pane -R
+         bind -n M-Up select-pane -U
+         bind -n M-Down select-pane -D
+         # split panes using | and -
+         bind \\ split-window -h
+         bind ] split-window -v
+         bind-key -n C-S-Left previous-window
+         #bind-key -n C-S-Right next-window
+         bind -n C-S-Right  run-shell 'current_window=$(tmux display-message -p '#I'); next_window=$(($current_window + 1)); tmux select-window -t :$next_window; if [ "$?" -ne "0" ]; then tmux new-window -t :$next_window; fi'
+      '';
     };
-
-    ### Xorg
-#    home.file.".xinitrc".source = ./dotfiles/.xinitrc;
-#    home.file.".Xresources".source = ./dotfiles/.Xresources;
-    # i3
-#    xdg.configFile."i3/config".source = ./dotfiles/.i3;
-#    xdg.configFile."i3status/config".source = ./dotfiles/.i3status;
   };
 }
 

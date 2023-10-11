@@ -25,6 +25,7 @@ in
       device = "/dev/nvme0n1p2";
       fsType = "btrfs";
       options = [ "subvol=niximperm@" ];
+      neededForBoot = true;
     };
   fileSystems."/home/sidney" =
     {
