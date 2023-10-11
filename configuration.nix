@@ -51,6 +51,7 @@ in
     "L+ /home/sidney/.local/share/vulkan      - sidney users - /nix/persist/home/.local/share/vulkan"
     "d  /home/sidney/.local/state          0755 sidney users"
     "L+ /home/sidney/.local/state/wireplumber - sidney users - /nix/persist/home/.local/state/wireplumber"
+    "L+ /home/sidney/.gitconfig               - sidney users - /nix/persist/home/.gitconfig"
     "L+ /home/sidney/.steam                   - sidney users - /nix/persist/home/.steam"
     "L+ /home/sidney/.mozilla                 - sidney users - /nix/persist/home/.mozilla"
     "L+ /home/sidney/.pki                     - sidney users - /nix/persist/home/.pki"
