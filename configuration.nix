@@ -96,11 +96,9 @@ in
     xfce.mousepad
     bat
     tree
-    vim
     neovim
     xclip
     lynx
-    tmux
     parted
     udisks2
     pavucontrol
@@ -198,7 +196,7 @@ in
   system.copySystemConfiguration = true;
   system.stateVersion = "23.05";
 
-  programs.fuse.userAllowOther = true;
+  programs.fuse.userAllowOther = true; # For impermanence
   home-manager.users.sidney = { pkgs, ... }: {
     home.stateVersion = "23.05";
     imports = [ "${impermanence}/home-manager.nix" ];
@@ -213,6 +211,83 @@ in
           core = {
           };
         };
+      };
+      bash = {
+        enable = true;
+        shellAliases = {
+          c="clear";
+          cdd="cd ~";
+          ls="ls --color=auto";
+          ll="ls -la";
+          rm="rmtrash";
+          grep="grep --color=auto";
+          df="df -h";
+          vi="vim";
+          dd="dd status=progress";
+          j="autojump";
+          aq="asciiquarium";
+          mail="neomutt";
+          mb="mbsync -a";
+          i3config="vim ~/.config/i3/config";
+          swayconfig="vim ~/.config/sway/config";
+          t="tmux new-session \; split-window -v \; select-pane -t 1 \; split-window -h \; select-pane -t 1 \; attach";
+          rainfall="python3 /home/sidney/build/rainfall/source/rainfall.py";
+          # NixOS
+          nixconfig="sudo vim ~/.config/nixos/configuration.nix";
+          imperm="sudo tree -x /";
+          archenter="distrobox enter archlinux-latest";
+        };
+      };
+      tmux = {
+        enable = true;
+        extraConfig = ''
+           # Make escape faster for vim.
+           set -sg escape-time 10
+           #setw -g mouse on
+           # Start windows and panes at 1, not 0
+           set -g base-index 1
+           setw -g pane-base-index 1
+           # switch panes using Alt-arrow without prefix
+           bind -n M-Left select-pane -L
+           bind -n M-Right select-pane -R
+           bind -n M-Up select-pane -U
+           bind -n M-Down select-pane -D
+           # split panes using | and -
+           bind \\ split-window -h
+           bind ] split-window -v
+           bind-key -n C-S-Left previous-window
+           #bind-key -n C-S-Right next-window
+           bind -n C-S-Right  run-shell 'current_window=$(tmux display-message -p '#I'); next_window=$(($current_window + 1)); tmux select-window -t :$next_window; if [ "$?" -ne "0" ]; then tmux new-window -t :$next_window; fi'
+        '';
+      };
+      vim = {
+        enable = true;
+        extraConfig = ''
+          set nocp
+          set number
+          set relativenumber
+          syntax on
+          set autoindent
+          set mouse=a
+          set wrap!
+          set showcmd
+          set expandtab
+          set viminfo+=%
+          set wildmenu
+          set wildignorecase
+          set wildmode=list:longest,full
+          set splitbelow
+          set splitright
+          set pastetoggle=<C-x>
+          set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
+          set list
+          vnoremap <C-c> "*y :let @+=@*<CR>
+          nnoremap <C-c> "*yy :let @+=@*<CR>
+          nnoremap <C-p> "+p
+          nnoremap \ :set wrap!<CR>
+          noremap \| :set list!<CR>
+          nnoremap <C-t> :tabnew<CR>
+        '';
       };
     };
 
@@ -231,17 +306,20 @@ in
         ".config/spotify"
         ".cache/spotify"
         ".local/state/wireplumber"
+        "Desktop"
+        "Documents"
+        "Downloads"
+        "Music"
+        "Pictures"
+        "Source"
+        "Videos"
       ];
       files = [
         ".bash_history"
-        ".bashrc"
-        ".vimrc"
-        ".tmux.conf"
         ".xinitrc"
         ".Xresources"
         ".config/i3/config"
         ".config/i3status/config"
-        ".config/picom/picom.conf"
       ];
     };
 
@@ -251,12 +329,6 @@ in
     # i3
 #    xdg.configFile."i3/config".source = ./dotfiles/.i3;
 #    xdg.configFile."i3status/config".source = ./dotfiles/.i3status;
-#    xdg.configFile."picom/picom.conf".source = ./dotfiles/.picom;
-
-    ### App Configs
-#    home.file.".bashrc".source = ./dotfiles/.bashrc;
-#    home.file.".tmux.conf".source = ./dotfiles/.tmux;
-#    home.file.".vimrc".source = ./dotfiles/.vimrc;
   };
 }
 

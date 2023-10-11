@@ -23,10 +23,13 @@
     extraPackages = with pkgs; [
       dmenu
       i3status
-      picom
    ];
   };
-#  services.picom.enable = true;
+  services.picom = {
+    enable = true;
+    settings = { };
+    vSync = true;
+  };
 
   services.dbus.enable = true;
 #  xdg.portal = {
