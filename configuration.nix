@@ -17,6 +17,7 @@ in
     [
       ./zephyrus.nix
       ./i3.nix
+#      ./plasma.nix
       "${impermanence}/nixos.nix"
       "${home-manager}/nixos"
     ];
