@@ -84,16 +84,6 @@ in
   #   useXkbConfig = true; # use xkbOptions in tty.
   };
 
-   # Enable sound.
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
-  };
-
   environment.etc = {
     "wireplumber/bluetooth.lua.d/51-bluez-config.lua".text = ''
       bluez_monitor.properties = {
@@ -121,9 +111,71 @@ in
     passwordFile = "/persist/passwords/root";
   };
 
-  security.sudo.extraConfig = "Defaults lecture = never";
+  security = {
+    sudo.extraConfig = "Defaults lecture = never";
+    # For sound
+    rtkit.enable = true;
+  };
 
-#  services.flatpak.enable = true;
+  services = {
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      jack.enable = true;
+    };
+#   flatpak.enable = true;
+    keyd = {
+      enable = true;
+      ids = [
+        "*"
+        "-1532:00b4"
+        "-068e:00b5"
+      ];
+      settings = {
+        main = {
+          capslock = "f13";
+        };
+        meta = {
+          "1" = "M-1";
+          "2" = "M-2";
+          "3" = "M-3";
+          "4" = "M-4";
+        };
+        altgr = {
+          enter = "macro(rightalt+enter)";
+          j = "left";
+          k = "down";
+          l = "right";
+          i = "up";
+          o = "backspace";
+          u = "backspace";
+          p = "delete";
+          h = "home";
+          ";" = "end";
+          "2" = "<";
+          "4" = ">";
+          "3" = "|";
+          w = "{";
+          r = "}";
+          e = "'";
+          s = "(";
+          f = ")";
+          d = "\"";
+          x = "[";
+          v = "]";
+          c = "`";
+          left = "previoussong";
+          right = "nextsong";
+          up = "volumeup";
+          down = "volumedown";
+          rightshift = "playpause";
+        };
+      };
+    };
+  };
+
   nixpkgs.config.allowUnfree = true;
   nix.extraOptions = "experimental-features = nix-command flakes";
   environment.systemPackages = with pkgs; [
@@ -179,57 +231,6 @@ in
      NIXOS_CONFIG = "/persist/home/.config/nixos/configuration.nix";
      WWW_HOME = "https://lite.duckduckgo.com/lite";
 #    XDG_CURRENT_DESKTOP = "i3";
-  };
-
-  services.keyd = {
-    enable = true;
-    ids = [
-      "*"
-      "-1532:00b4"
-      "-068e:00b5"
-    ];
-    settings = {
-      main = {
-        capslock = "f13";
-      };
-      meta = {
-        "1" = "M-1";
-        "2" = "M-2";
-        "3" = "M-3";
-        "4" = "M-4";
-      };
-      altgr = {
-        enter = "macro(rightalt+enter)";
-        j = "left";
-        k = "down";
-        l = "right";
-        i = "up";
-        o = "backspace";
-        u = "backspace";
-        p = "delete";
-        h = "home";
-        ";" = "end";
-
-        "2" = "<";
-        "4" = ">";
-        "3" = "|";
-        w = "{";
-        r = "}";
-        e = "'";
-        s = "(";
-        f = ")";
-        d = "\"";
-        x = "[";
-        v = "]";
-        c = "`";
-
-        left = "previoussong";
-        right = "nextsong";
-        up = "volumeup";
-        down = "volumedown";
-        rightshift = "playpause";
-      };
-    };
   };
 
   virtualisation.docker.enable = true;
