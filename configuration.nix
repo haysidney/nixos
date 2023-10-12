@@ -142,6 +142,7 @@ in
       udisks2
       pavucontrol
       feh
+      flameshot
       killall
       pulseaudio
       ranger
