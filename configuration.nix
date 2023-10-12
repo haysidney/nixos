@@ -121,6 +121,8 @@ in
     passwordFile = "/persist/passwords/root";
   };
 
+  security.sudo.extraConfig = "Defaults lecture = never";
+
 #  services.flatpak.enable = true;
   nixpkgs.config.allowUnfree = true;
   nix.extraOptions = "experimental-features = nix-command flakes";
@@ -237,15 +239,7 @@ in
 
   programs = {
     steam.enable = true;
-#    git = {
-#      enable = true;
-#      userName  = "Sidney Hays";
-#      userEmail = "tech@sidneyhays.com";
-#      extraConfig = {
-#        core = {
-#        };
-#      };
-#    };
+    git.enable = true;
     bash = {
       shellAliases = {
         c="clear";
