@@ -87,11 +87,15 @@ in
       brightnessctl
     ];
   };
-  services.supergfxd.enable = true;
-  services.asusd.enable = true;
-  services.asusd.enableUserService = true;
-  services.auto-cpufreq.enable = true;
-  services.xserver.videoDrivers = [ "amdgpu" ];
+  services = {
+    auto-cpufreq.enable = true;
+    xserver.videoDrivers = [ "amdgpu" ];
+    supergfxd.enable = true;
+    asusd = {
+      enable = true;
+      enableUserService = true;
+    };
+  };
 
   systemd.tmpfiles.rules = [
     "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.hip}"
