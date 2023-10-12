@@ -1,6 +1,6 @@
 { config, lib, pkgs, modulesPath, ... }:
 let
-  ryzen_smu = config.boot.kernelPackages.callPackage ./ryzen_smu.nix {};
+
 in
 {
   imports =
@@ -10,9 +10,9 @@ in
 #  boot.kernelPackages = pkgs.linuxPackages_latest;
 #  boot.kernelPackages = pkgs.linuxPackages_6_3;
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "usbhid" "usb_storage" "sd_mod" "sdhci_pci" ];
-  boot.initrd.kernelModules = [ "ryzen_smu" ];
+  boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" "amdgpu" ];
-  boot.extraModulePackages = [ ryzen_smu ];
+  boot.extraModulePackages = [ ];
 
   fileSystems."/" =
     {
@@ -84,7 +84,6 @@ in
     systemPackages = with pkgs; [
       asusctl
       blender-hip
-      ryzenadj
       brightnessctl
     ];
   };
@@ -97,34 +96,4 @@ in
   systemd.tmpfiles.rules = [
     "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.hip}"
   ];
-
-
-
-  systemd = {
-    services.asus-ryzen-power = {
-      enable = true;
-      script = ''
-        if [ -z "$POW" ]; then
-            POW="m"
-        fi
-        if [[ "$POW" == "m" ]]; then
-          /run/current-system/sw/bin/ryzenadj -b 80000
-          /run/current-system/sw/bin/ryzenadj -c 70000
-          /run/current-system/sw/bin/ryzenadj -f 85
-          /run/current-system/sw/bin/asusctl -c 80
-        elif [[ "$POW" == "l" ]]; then
-          /run/current-system/sw/bin/ryzenadj -b 8000
-          /run/current-system/sw/bin/ryzenadj -c 5000
-          /run/current-system/sw/bin/ryzenadj -f 85
-          /run/current-system/sw/bin/asusctl -c 80
-        fi
-      '';
-      serviceConfig = {
-        Type = "simple";
-        Restart = "always";
-        RestartSec = 60;
-      };
-      wantedBy = [ "default.target" ];
-    };
-  };
 }
