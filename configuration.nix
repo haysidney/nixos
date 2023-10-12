@@ -136,7 +136,6 @@ in
     };
     interactiveShellInit = "bind -s 'set completion-ignore-case on'";
   };
-  hardware.bluetooth.enable = true;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

@@ -71,27 +71,28 @@ in
   # networking.interfaces.wlp5s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware = {
+    bluetooth.enable = true;
+    opengl.driSupport = true;
+    # For 32 bit applications
+    opengl.driSupport32Bit = true;
+    cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  };
 
-  environment.systemPackages = with pkgs; [
-    asusctl
-    blender-hip
-    ryzenadj
-    brightnessctl
-  ];
+  environment = {
+    sessionVariables = { AMD_VULKAN_ICD = "RADV"; };
+    systemPackages = with pkgs; [
+      asusctl
+      blender-hip
+      ryzenadj
+      brightnessctl
+    ];
+  };
   services.supergfxd.enable = true;
   services.asusd.enable = true;
   services.asusd.enableUserService = true;
   services.auto-cpufreq.enable = true;
-#  services.tlp.enable = true;
-#  services.tlp.settings = {
-#    CPU_DRIVER_OPMODE_ON_AC="passive";
-#    CPU_DRIVER_OPMODE_ON_BAT="passive";
-#  };
   services.xserver.videoDrivers = [ "amdgpu" ];
-  hardware.opengl.driSupport = true;
-  # For 32 bit applications
-  hardware.opengl.driSupport32Bit = true;
 
   systemd.tmpfiles.rules = [
     "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.hip}"
