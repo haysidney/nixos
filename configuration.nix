@@ -134,6 +134,7 @@ in
        WWW_HOME = "https://lite.duckduckgo.com/lite";
 #      XDG_CURRENT_DESKTOP = "i3";
     };
+    interactiveShellInit = "bind -s 'set completion-ignore-case on'";
   };
   hardware.bluetooth.enable = true;
 
@@ -228,6 +229,7 @@ in
         };
       };
     };
+    switcherooControl.enable = true;
   };
 
   nixpkgs.config.allowUnfree = true;
