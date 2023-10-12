@@ -72,6 +72,55 @@ in
       ];
     };
     etc = {
+      "keyd/default.conf".text = ''
+        [ids]
+        *
+        -1532:00b4
+        -068e:00b5
+
+        [main]
+        capslock = f13
+        # Explicitly define these so that FFXIV doesn't
+        # prevent me from switching workspaces
+        [meta]
+        1 = M-1
+        2 = M-2
+        3 = M-3
+        4 = M-4
+
+        [altgr]
+        # Don't get in the way of r_alt enter
+        enter = macro(rightalt+enter)
+
+        j = left
+        k = down
+        l = right
+        i = up
+        o = backspace
+        u = backspace
+        p = delete
+        h = home
+        ; = end
+
+        2 = <
+        4 = >
+        3 = |
+        w = {
+        r = }
+        e = '
+        s = (
+        f = )
+        d = "
+        x = [
+        v = ]
+        c = `
+
+        left = previoussong
+        right = nextsong
+        up = volumeup
+        down = volumedown
+        rightshift = playpause
+      '';
       "wireplumber/bluetooth.lua.d/51-bluez-config.lua".text = ''
         bluez_monitor.properties = {
           ["bluez5.enable-sbc-xq"] = true,
@@ -109,12 +158,11 @@ in
       spotify
       bibata-cursors
       bibata-cursors-translucent
-      unstable.gamescope
       bleeding.xivlauncher
       (unstable-08-19-2023.st.overrideAttrs (oldAttrs: rec {
         patches = [
-          /home/sidney/.config/nixos/extras/st-font-size.diff
-          /home/sidney/.config/nixos/extras/st-delkey.diff
+          ./extras/st-font-size.diff
+          ./extras/st-delkey.diff
           (fetchpatch {
             url = "https://st.suckless.org/patches/alpha/st-alpha-20220206-0.8.5.diff";
             sha256 = "01/KBNbBKcFcfbcpMnev/LCzHpON3selAYNo8NUPbF4=";
@@ -150,12 +198,17 @@ in
   #   useXkbConfig = true; # use xkbOptions in tty.
   };
 
+  users.groups = {
+    keyd = {
+      members = [ "sidney" ];
+    };
+  };
   users.users.sidney = {
 #    initialPassword = "1234";
     # Hashed password I yoinked from /etc/shadow after setting my desired password
     passwordFile = "/persist/passwords/sidney";
     isNormalUser = true;
-    extraGroups = [ "wheel" "keyd" "docker" ];
+    extraGroups = [ "wheel" "docker" ];
     packages = with pkgs; [
       firefox
     ];
@@ -180,57 +233,43 @@ in
       jack.enable = true;
     };
 #   flatpak.enable = true;
-    keyd = {
+    ananicy = {
       enable = true;
-      ids = [
-        "*"
-        "-1532:00b4"
-        "-068e:00b5"
-      ];
       settings = {
-        main = {
-          capslock = "f13";
-        };
-        meta = {
-          "1" = "M-1";
-          "2" = "M-2";
-          "3" = "M-3";
-          "4" = "M-4";
-        };
-        altgr = {
-          enter = "macro(rightalt+enter)";
-          j = "left";
-          k = "down";
-          l = "right";
-          i = "up";
-          o = "backspace";
-          u = "backspace";
-          p = "delete";
-          h = "home";
-          ";" = "end";
-          "2" = "<";
-          "4" = ">";
-          "3" = "|";
-          w = "{";
-          r = "}";
-          e = "'";
-          s = "(";
-          f = ")";
-          d = "\"";
-          x = "[";
-          v = "]";
-          c = "`";
-          left = "previoussong";
-          right = "nextsong";
-          up = "volumeup";
-          down = "volumedown";
-          rightshift = "playpause";
-        };
+        check_freq=10;
+        # Verbose msg: true/false
+        cgroup_load=true;
+        type_load=true;
+        rule_load=true;
+        apply_nice=true;
+        apply_ioclass=true;
+        apply_ionice=true;
+        apply_sched=true;
+        apply_oom_score_adj=true;
+        apply_cgroup=true;
+        check_disks_schedulers=true;
       };
+      extraRules = ''
+        {"name": "gamescope", "nice": -20}
+      '';
     };
     switcherooControl.enable = true;
   };
-
+  systemd.services = {
+    keyd = {
+      enable = true;
+      description = "keyd key remapping daemon";
+      unitConfig = {
+        Requires = "local-fs.target";
+        After = "local-fs.target";
+      };
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.keyd}/bin/keyd";
+      };
+      wantedBy = [ "default.target" ];
+    };
+  };
   nixpkgs.config.allowUnfree = true;
   nix.extraOptions = "experimental-features = nix-command flakes";
 
@@ -248,7 +287,6 @@ in
         cdd="cd ~";
         ls="ls --color=auto";
         ll="ls -la";
-        rm="rmtrash";
         grep="grep --color=auto";
         df="df -h";
         vi="vim";
@@ -290,6 +328,17 @@ in
          #bind-key -n C-S-Right next-window
          bind -n C-S-Right  run-shell 'current_window=$(tmux display-message -p '#I'); next_window=$(($current_window + 1)); tmux select-window -t :$next_window; if [ "$?" -ne "0" ]; then tmux new-window -t :$next_window; fi'
       '';
+    };
+    gamescope = {
+      enable = true;
+      args = [
+        "--rt"
+        "--immediate-flips"
+        "-W 2560"
+        "-H 1600"
+        "-f"
+        "-o 10"
+      ];
     };
   };
 }

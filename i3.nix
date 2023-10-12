@@ -27,7 +27,9 @@
   };
   services.picom = {
     enable = true;
-    settings = { };
+    settings = {
+      unredir-if-possible = true;
+    };
     vSync = true;
   };
 
