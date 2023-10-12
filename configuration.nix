@@ -33,8 +33,6 @@ in
     "L+ /home/sidney/.config/discord          - sidney users - /persist/home/.config/discord"
     "L+ /home/sidney/.config/keyd             - sidney users - /persist/home/.config/keyd"
     "L+ /home/sidney/.config/spotify          - sidney users - /persist/home/.config/spotify"
-    "L+ /home/sidney/.config/i3               - sidney users - /persist/home/.config/i3"
-    "L+ /home/sidney/.config/i3status         - sidney users - /persist/home/.config/i3status"
     "d  /home/sidney/.local                0755 sidney users"
     "d  /home/sidney/.local/share          0755 sidney users"
     "L+ /home/sidney/.local/share/Steam       - sidney users - /persist/home/.local/share/Steam"
@@ -55,7 +53,6 @@ in
     "L+ /home/sidney/Videos                   - sidney users - /persist/home/Videos"
     "L+ /home/sidney/.bash_history            - sidney users - /persist/home/.bash_history"
     "L+ /home/sidney/.vimrc                   - sidney users - /persist/home/.vimrc"
-    "L+ /home/sidney/.xinitrc                 - sidney users - /persist/home/.xinitrc"
     "L+ /home/sidney/.Xresources              - sidney users - /persist/home/.Xresources"
   ];
   environment = {
