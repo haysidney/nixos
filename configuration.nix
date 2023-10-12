@@ -277,6 +277,8 @@ in
          # Make escape faster for vim.
          set -sg escape-time 10
          #setw -g mouse on
+         # Fix Ranger Crash
+         set -g default-terminal "screen-256color"
          # Start windows and panes at 1, not 0
          set -g base-index 1
          setw -g pane-base-index 1
