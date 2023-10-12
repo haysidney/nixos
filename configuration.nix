@@ -22,17 +22,6 @@ in
       "${home-manager}/nixos"
     ];
 
-  environment.persistence."/persist/system" = {
-    directories = [
-      "/etc/nixos"
-      "/etc/NetworkManager"
-      "/var/log"
-      "/var/lib"
-    ];
-    files = [
-      "/etc/machine-id"
-    ];
-  };
   systemd.tmpfiles.rules = [
     "d  /mnt                               0755 root root"
     "d  /home/sidney/.cache                0755 sidney users"
@@ -70,6 +59,83 @@ in
     "L+ /home/sidney/.xinitrc                 - sidney users - /persist/home/.xinitrc"
     "L+ /home/sidney/.Xresources              - sidney users - /persist/home/.Xresources"
   ];
+  environment = {
+    persistence."/persist/system" = {
+      directories = [
+        "/etc/nixos"
+        "/etc/NetworkManager"
+        "/var/log"
+        "/var/lib"
+      ];
+      files = [
+        "/etc/machine-id"
+      ];
+    };
+    etc = {
+      "wireplumber/bluetooth.lua.d/51-bluez-config.lua".text = ''
+        bluez_monitor.properties = {
+          ["bluez5.enable-sbc-xq"] = true,
+          ["bluez5.enable-msbc"] = true,
+          ["bluez5.enable-hw-volume"] = true,
+          ["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]"
+        }
+      '';
+    };
+    systemPackages = with pkgs; [
+      vim
+      keyd
+      htop
+      trash-cli
+      rmtrash
+      xfce.mousepad
+      bat
+      tree
+      neovim
+      xclip
+      lynx
+      parted
+      udisks2
+      pavucontrol
+      feh
+      killall
+      pulseaudio
+      ranger
+      w3m
+      p7zip
+      discord
+      distrobox
+      transmission
+      _1password-gui
+      spotify
+      bibata-cursors
+      bibata-cursors-translucent
+      unstable.gamescope
+      bleeding.xivlauncher
+      (unstable-08-19-2023.st.overrideAttrs (oldAttrs: rec {
+        patches = [
+          /home/sidney/.config/nixos/extras/st-font-size.diff
+          /home/sidney/.config/nixos/extras/st-delkey.diff
+          (fetchpatch {
+            url = "https://st.suckless.org/patches/alpha/st-alpha-20220206-0.8.5.diff";
+            sha256 = "01/KBNbBKcFcfbcpMnev/LCzHpON3selAYNo8NUPbF4=";
+          })
+          (fetchpatch {
+            url = "https://st.suckless.org/patches/w3m/st-w3m-0.8.3.diff";
+            sha256 = "nVSG8zuRt3oKQCndzm+3ykuRB1NMYyas0Ne3qCG59ok=";
+          })
+        ];
+      }))
+    ];
+    sessionVariables = {
+       EDITOR = "vim";
+       NIXPKGS_ALLOW_UNFREE = "1";
+       XL_SECRET_PROVIDER = "FILE"; # For XIVLauncher
+       NIXOS_CONFIG = "/persist/home/.config/nixos/configuration.nix";
+       WWW_HOME = "https://lite.duckduckgo.com/lite";
+#      XDG_CURRENT_DESKTOP = "i3";
+    };
+  };
+  hardware.bluetooth.enable = true;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -83,18 +149,6 @@ in
     keyMap = "colemak";
   #   useXkbConfig = true; # use xkbOptions in tty.
   };
-
-  environment.etc = {
-    "wireplumber/bluetooth.lua.d/51-bluez-config.lua".text = ''
-      bluez_monitor.properties = {
-        ["bluez5.enable-sbc-xq"] = true,
-        ["bluez5.enable-msbc"] = true,
-        ["bluez5.enable-hw-volume"] = true,
-        ["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]"
-      }
-    '';
-  };
-  hardware.bluetooth.enable = true;
 
   users.users.sidney = {
 #    initialPassword = "1234";
@@ -178,60 +232,6 @@ in
 
   nixpkgs.config.allowUnfree = true;
   nix.extraOptions = "experimental-features = nix-command flakes";
-  environment.systemPackages = with pkgs; [
-    vim
-    keyd
-    htop
-    trash-cli
-    rmtrash
-    xfce.mousepad
-    bat
-    tree
-    neovim
-    xclip
-    lynx
-    parted
-    udisks2
-    pavucontrol
-    feh
-    killall
-    pulseaudio
-    ranger
-    w3m
-    p7zip
-    discord
-    distrobox
-    transmission
-    _1password-gui
-    spotify
-    bibata-cursors
-    bibata-cursors-translucent
-    unstable.gamescope
-    bleeding.xivlauncher
-    (unstable-08-19-2023.st.overrideAttrs (oldAttrs: rec {
-      patches = [
-        /home/sidney/.config/nixos/extras/st-font-size.diff
-        /home/sidney/.config/nixos/extras/st-delkey.diff
-        (fetchpatch {
-          url = "https://st.suckless.org/patches/alpha/st-alpha-20220206-0.8.5.diff";
-          sha256 = "01/KBNbBKcFcfbcpMnev/LCzHpON3selAYNo8NUPbF4=";
-        })
-        (fetchpatch {
-          url = "https://st.suckless.org/patches/w3m/st-w3m-0.8.3.diff";
-          sha256 = "nVSG8zuRt3oKQCndzm+3ykuRB1NMYyas0Ne3qCG59ok=";
-        })
-      ];
-    }))
-  ];
-
-  environment.sessionVariables = {
-     EDITOR = "vim";
-     NIXPKGS_ALLOW_UNFREE = "1";
-     XL_SECRET_PROVIDER = "FILE"; # For XIVLauncher
-     NIXOS_CONFIG = "/persist/home/.config/nixos/configuration.nix";
-     WWW_HOME = "https://lite.duckduckgo.com/lite";
-#    XDG_CURRENT_DESKTOP = "i3";
-  };
 
   virtualisation.docker.enable = true;
 
