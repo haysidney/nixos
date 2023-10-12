@@ -102,6 +102,62 @@ in
             bat_command: "/run/current-system/sw/bin/asusctl profile -P Quiet",
         )
       '';
+      auraConfig = ''
+        (
+            brightness: High,
+            current_mode: Static,
+            builtins: {
+                Static: (
+                    mode: Static,
+                    zone: None,
+                    colour1: (255, 255, 255),
+                    colour2: (0, 0, 0),
+                    speed: Med,
+                    direction: Right,
+                ),
+                Breathe: (
+                    mode: Breathe,
+                    zone: None,
+                    colour1: (255, 255, 255),
+                    colour2: (0, 0, 0),
+                    speed: Med,
+                    direction: Right,
+                ),
+                Rainbow: (
+                    mode: Rainbow,
+                    zone: None,
+                    colour1: (255, 255, 255),
+                    colour2: (0, 0, 0),
+                    speed: Med,
+                    direction: Right,
+                ),
+                Pulse: (
+                    mode: Pulse,
+                    zone: None,
+                    colour1: (255, 255, 255),
+                    colour2: (0, 0, 0),
+                    speed: Med,
+                    direction: Right,
+                ),
+            },
+            multizone: None,
+            multizone_on: false,
+            enabled: AuraDevRog2([
+                AwakeBar,
+                AwakeLogo,
+                BootBar,
+                BootKeyb,
+                ShutdownKeyb,
+                SleepKeyb,
+                SleepLogo,
+                ShutdownBar,
+                SleepBar,
+                ShutdownLogo,
+                BootLogo,
+                AwakeKeyb,
+            ]),
+        )
+      '';
     };
   };
 
