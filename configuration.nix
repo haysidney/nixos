@@ -21,7 +21,7 @@ in
       "${home-manager}/nixos"
     ];
 
-  environment.persistence."/nix/persist/system" = {
+  environment.persistence."/persist/system" = {
     directories = [
       "/etc/nixos"
       "/etc/NetworkManager"
@@ -35,38 +35,39 @@ in
   systemd.tmpfiles.rules = [
     "d  /mnt                               0755 root root"
     "d  /home/sidney/.cache                0755 sidney users"
-    "L+ /home/sidney/.cache/spotify           - sidney users - /nix/persist/home/.cache/spotify"
+    "L+ /home/sidney/.cache/spotify           - sidney users - /persist/home/.cache/spotify"
     "d  /home/sidney/.config               0755 sidney users"
-    "L+ /home/sidney/.config/nixos            - sidney users - /nix/persist/home/.config/nixos"
-    "L+ /home/sidney/.config/htop             - sidney users - /nix/persist/home/.config/htop"
-    "L+ /home/sidney/.config/1Password        - sidney users - /nix/persist/home/.config/1Password"
-    "L+ /home/sidney/.config/discord          - sidney users - /nix/persist/home/.config/discord"
-    "L+ /home/sidney/.config/keyd             - sidney users - /nix/persist/home/.config/keyd"
-    "L+ /home/sidney/.config/spotify          - sidney users - /nix/persist/home/.config/spotify"
-    "L+ /home/sidney/.config/i3               - sidney users - /nix/persist/home/.config/i3"
-    "L+ /home/sidney/.config/i3status         - sidney users - /nix/persist/home/.config/i3status"
+    "L+ /home/sidney/.config/nixos            - sidney users - /persist/home/.config/nixos"
+    "L+ /home/sidney/.config/htop             - sidney users - /persist/home/.config/htop"
+    "L+ /home/sidney/.config/1Password        - sidney users - /persist/home/.config/1Password"
+    "L+ /home/sidney/.config/discord          - sidney users - /persist/home/.config/discord"
+    "L+ /home/sidney/.config/keyd             - sidney users - /persist/home/.config/keyd"
+    "L+ /home/sidney/.config/spotify          - sidney users - /persist/home/.config/spotify"
+    "L+ /home/sidney/.config/i3               - sidney users - /persist/home/.config/i3"
+    "L+ /home/sidney/.config/i3status         - sidney users - /persist/home/.config/i3status"
     "d  /home/sidney/.local                0755 sidney users"
     "d  /home/sidney/.local/share          0755 sidney users"
-    "L+ /home/sidney/.local/share/Steam       - sidney users - /nix/persist/home/.local/share/Steam"
-    "L+ /home/sidney/.local/share/vulkan      - sidney users - /nix/persist/home/.local/share/vulkan"
+    "L+ /home/sidney/.local/share/Steam       - sidney users - /persist/home/.local/share/Steam"
+    "L+ /home/sidney/.local/share/vulkan      - sidney users - /persist/home/.local/share/vulkan"
     "d  /home/sidney/.local/state          0755 sidney users"
-    "L+ /home/sidney/.local/state/wireplumber - sidney users - /nix/persist/home/.local/state/wireplumber"
-    "L+ /home/sidney/.gitconfig               - sidney users - /nix/persist/home/.gitconfig"
-    "L+ /home/sidney/.steam                   - sidney users - /nix/persist/home/.steam"
-    "L+ /home/sidney/.mozilla                 - sidney users - /nix/persist/home/.mozilla"
-    "L+ /home/sidney/.pki                     - sidney users - /nix/persist/home/.pki"
-    "L+ /home/sidney/.ssh                     - sidney users - /nix/persist/home/.ssh"
-    "L+ /home/sidney/.var                     - sidney users - /nix/persist/home/.var" # Flatpak
-    "L+ /home/sidney/Desktop                  - sidney users - /nix/persist/home/Desktop"
-    "L+ /home/sidney/Documents                - sidney users - /nix/persist/home/Documents"
-    "L+ /home/sidney/Downloads                - sidney users - /nix/persist/home/Downloads"
-    "L+ /home/sidney/Music                    - sidney users - /nix/persist/home/Music"
-    "L+ /home/sidney/Pictures                 - sidney users - /nix/persist/home/Pictures"
-    "L+ /home/sidney/Source                   - sidney users - /nix/persist/home/Source"
-    "L+ /home/sidney/Videos                   - sidney users - /nix/persist/home/Videos"
-    "L+ /home/sidney/.bash_history            - sidney users - /nix/persist/home/.bash_history"
-    "L+ /home/sidney/.xinitrc                 - sidney users - /nix/persist/home/.xinitrc"
-    "L+ /home/sidney/.Xresources              - sidney users - /nix/persist/home/.Xresources"
+    "L+ /home/sidney/.local/state/wireplumber - sidney users - /persist/home/.local/state/wireplumber"
+    "L+ /home/sidney/.gitconfig               - sidney users - /persist/home/.gitconfig"
+    "L+ /home/sidney/.steam                   - sidney users - /persist/home/.steam"
+    "L+ /home/sidney/.mozilla                 - sidney users - /persist/home/.mozilla"
+    "L+ /home/sidney/.pki                     - sidney users - /persist/home/.pki"
+    "L+ /home/sidney/.ssh                     - sidney users - /persist/home/.ssh"
+    "L+ /home/sidney/.var                     - sidney users - /persist/home/.var" # Flatpak
+    "L+ /home/sidney/Desktop                  - sidney users - /persist/home/Desktop"
+    "L+ /home/sidney/Documents                - sidney users - /persist/home/Documents"
+    "L+ /home/sidney/Downloads                - sidney users - /persist/home/Downloads"
+    "L+ /home/sidney/Music                    - sidney users - /persist/home/Music"
+    "L+ /home/sidney/Pictures                 - sidney users - /persist/home/Pictures"
+    "L+ /home/sidney/Source                   - sidney users - /persist/home/Source"
+    "L+ /home/sidney/Videos                   - sidney users - /persist/home/Videos"
+    "L+ /home/sidney/.bash_history            - sidney users - /persist/home/.bash_history"
+    "L+ /home/sidney/.vimrc                   - sidney users - /persist/home/.vimrc"
+    "L+ /home/sidney/.xinitrc                 - sidney users - /persist/home/.xinitrc"
+    "L+ /home/sidney/.Xresources              - sidney users - /persist/home/.Xresources"
   ];
 
   boot.loader.systemd-boot.enable = true;
@@ -107,7 +108,7 @@ in
   users.users.sidney = {
 #    initialPassword = "1234";
     # Hashed password I yoinked from /etc/shadow after setting my desired password
-    passwordFile = "/nix/persist/passwords/sidney";
+    passwordFile = "/persist/passwords/sidney";
     isNormalUser = true;
     extraGroups = [ "wheel" "keyd" "docker" ];
     packages = with pkgs; [
@@ -116,14 +117,10 @@ in
   };
   users.users.root = {
 #    initialPassword = "1234";
-    passwordFile = "/nix/persist/passwords/root";
+    passwordFile = "/persist/passwords/root";
   };
 
 #  services.flatpak.enable = true;
-#  xdg.portal = {
-#    enable = true;
-#    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-#  };
   nixpkgs.config.allowUnfree = true;
   nix.extraOptions = "experimental-features = nix-command flakes";
   environment.systemPackages = with pkgs; [
@@ -158,8 +155,8 @@ in
     bleeding.xivlauncher
     (unstable-08-19-2023.st.overrideAttrs (oldAttrs: rec {
       patches = [
-        /nix/persist/home/.config/nixos/extras/st-font-size.diff
-        /nix/persist/home/.config/nixos/extras/st-delkey.diff
+        /home/sidney/.config/nixos/extras/st-font-size.diff
+        /home/sidney/.config/nixos/extras/st-delkey.diff
         (fetchpatch {
           url = "https://st.suckless.org/patches/alpha/st-alpha-20220206-0.8.5.diff";
           sha256 = "01/KBNbBKcFcfbcpMnev/LCzHpON3selAYNo8NUPbF4=";
@@ -176,7 +173,7 @@ in
      EDITOR = "vim";
      NIXPKGS_ALLOW_UNFREE = "1";
      XL_SECRET_PROVIDER = "FILE"; # For XIVLauncher
-     NIXOS_CONFIG = "/nix/persist/home/.config/nixos/configuration.nix";
+     NIXOS_CONFIG = "/persist/home/.config/nixos/configuration.nix";
      WWW_HOME = "https://lite.duckduckgo.com/lite";
 #    XDG_CURRENT_DESKTOP = "i3";
   };

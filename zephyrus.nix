@@ -27,6 +27,13 @@ in
       options = [ "subvol=niximperm@" ];
       neededForBoot = true;
     };
+  fileSystems."/persist" =
+    {
+      device = "/dev/nvme0n1p2";
+      fsType = "btrfs";
+      options = [ "subvol=niximperm@persist" ];
+      neededForBoot = true;
+    };
   fileSystems."/home/sidney" =
     {
 #      device = "/dev/disk/by-uuid/72b13570-da63-40c8-ad39-6918cdb9f257";
