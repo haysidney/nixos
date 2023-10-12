@@ -46,7 +46,6 @@ in
     "L+ /home/sidney/.mozilla                 - sidney users - /persist/home/.mozilla"
     "L+ /home/sidney/.pki                     - sidney users - /persist/home/.pki"
     "L+ /home/sidney/.ssh                     - sidney users - /persist/home/.ssh"
-    "L+ /home/sidney/.var                     - sidney users - /persist/home/.var" # Flatpak
     "L+ /home/sidney/Desktop                  - sidney users - /persist/home/Desktop"
     "L+ /home/sidney/Documents                - sidney users - /persist/home/Documents"
     "L+ /home/sidney/Downloads                - sidney users - /persist/home/Downloads"
@@ -232,7 +231,6 @@ in
       pulse.enable = true;
       jack.enable = true;
     };
-#   flatpak.enable = true;
     ananicy = {
       enable = true;
       settings = {
