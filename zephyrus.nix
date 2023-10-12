@@ -82,7 +82,6 @@ in
   environment = {
     sessionVariables = { AMD_VULKAN_ICD = "RADV"; };
     systemPackages = with pkgs; [
-      asusctl
       blender-hip
       brightnessctl
     ];
@@ -94,6 +93,15 @@ in
     asusd = {
       enable = true;
       enableUserService = true;
+      asusdConfig = ''
+        (
+            bat_charge_limit: 80,
+            panel_od: false,
+            disable_nvidia_powerd_on_battery: false,
+            ac_command: "/run/current-system/sw/bin/asusctl profile -P Balanced",
+            bat_command: "/run/current-system/sw/bin/asusctl profile -P Quiet",
+        )
+      '';
     };
   };
 
