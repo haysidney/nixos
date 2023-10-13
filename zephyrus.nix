@@ -8,11 +8,14 @@ in
     ];
 
 #  boot.kernelPackages = pkgs.linuxPackages_latest;
-#  boot.kernelPackages = pkgs.linuxPackages_6_3;
+  boot.kernelPackages = pkgs.linuxPackages_6_5;
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "usbhid" "usb_storage" "sd_mod" "sdhci_pci" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" "amdgpu" ];
+  boot.kernelModules = [ "kvm-amd" "amdgpu" "msr" ];
   boot.extraModulePackages = [ ];
+  boot.kernelParams = [
+    "amd_pstate=active"
+  ];
 
   fileSystems."/" =
     {
@@ -84,10 +87,29 @@ in
     systemPackages = with pkgs; [
       blender-hip
       brightnessctl
+      linuxKernel.packages.linux_6_5.cpupower
     ];
+    etc = {
+      "asusd/ac_command" = {
+        mode = "0744";
+        text = ''
+          /run/current-system/sw/bin/asusctl profile -P Balanced
+          ${pkgs.linuxKernel.packages.linux_6_5.cpupower}/bin/cpupower frequency-set -g performance
+          # When the scaling governor is set to performance we can't edit the epp hint
+          #/run/current-system/sw/bin/bash -c "echo "balance_power" | /run/current-system/sw/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference"
+        '';
+      };
+      "asusd/bat_command" = {
+        mode = "0744";
+        text = ''
+          /run/current-system/sw/bin/asusctl profile -P Quiet
+          ${pkgs.linuxKernel.packages.linux_6_5.cpupower}/bin/cpupower frequency-set -g powersave
+          /run/current-system/sw/bin/bash -c "echo "power" | /run/current-system/sw/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference"
+        '';
+      };
+    };
   };
   services = {
-    auto-cpufreq.enable = true;
     xserver.videoDrivers = [ "amdgpu" ];
     supergfxd.enable = true;
     asusd = {
@@ -98,8 +120,8 @@ in
             bat_charge_limit: 80,
             panel_od: false,
             disable_nvidia_powerd_on_battery: false,
-            ac_command: "/run/current-system/sw/bin/asusctl profile -P Balanced",
-            bat_command: "/run/current-system/sw/bin/asusctl profile -P Quiet",
+            ac_command: "/run/current-system/sw/bin/bash -c /etc/asusd/ac_command",
+            bat_command: "/run/current-system/sw/bin/bash -c /etc/asusd/bat_command",
         )
       '';
       auraConfig = ''
