@@ -103,10 +103,12 @@
         #xterm -geometry 80x20+494-0 &
         #exec xterm -geometry 80x66+0+0 -name login
 
-        exec i3 -c /etc/i3/config
+        ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 &
+        dbus-run-session i3 -c /etc/i3/config >~/i3log 2>&1
       '';
     };
     systemPackages = with pkgs; [
+      polkit_gnome
     ];
   };
 }
