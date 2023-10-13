@@ -106,6 +106,12 @@
         ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 &
         dbus-run-session i3 -c /etc/i3/config >~/i3log 2>&1
       '';
+      "i3/elevated.sh" = {
+        mode = "0755";
+        text = ''
+          pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY HOME=$HOME solaar -w hide
+        '';
+      };
     };
     systemPackages = with pkgs; [
       polkit_gnome

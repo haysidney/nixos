@@ -88,6 +88,7 @@ in
       blender-hip
       brightnessctl
       linuxKernel.packages.linux_6_5.cpupower
+      solaar
     ];
     etc = {
       "asusd/ac_command" = {

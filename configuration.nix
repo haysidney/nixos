@@ -33,6 +33,7 @@ in
     "L+ /home/sidney/.config/1Password        - sidney users - /persist/home/.config/1Password"
     "L+ /home/sidney/.config/discord          - sidney users - /persist/home/.config/discord"
     "L+ /home/sidney/.config/keyd             - sidney users - /persist/home/.config/keyd"
+    "L+ /home/sidney/.config/solaar           - sidney users - /persist/home/.config/solaar"
     "L+ /home/sidney/.config/spotify          - sidney users - /persist/home/.config/spotify"
     "d  /home/sidney/.local                0755 sidney users"
     "d  /home/sidney/.local/share          0755 sidney users"
