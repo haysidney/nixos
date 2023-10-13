@@ -26,6 +26,7 @@ in
     "d  /mnt                               0755 root root"
     "d  /home/sidney/.cache                0755 sidney users"
     "L+ /home/sidney/.cache/spotify           - sidney users - /persist/home/.cache/spotify"
+    "L+ /home/sidney/.cert                    - sidney users - /persist/home/.cert"
     "d  /home/sidney/.config               0755 sidney users"
     "L+ /home/sidney/.config/nixos            - sidney users - /persist/home/.config/nixos"
     "L+ /home/sidney/.config/htop             - sidney users - /persist/home/.config/htop"
