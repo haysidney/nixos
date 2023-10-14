@@ -145,6 +145,7 @@ in
       pavucontrol
       feh
       flameshot
+      neofetch
       killall
       pulseaudio
       ranger
@@ -152,6 +153,7 @@ in
       p7zip
       discord
       distrobox
+      python312
       transmission
       _1password-gui
       spotify
