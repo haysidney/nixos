@@ -11,8 +11,8 @@ in
   boot.kernelPackages = pkgs.linuxPackages_6_5;
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "usbhid" "usb_storage" "sd_mod" "sdhci_pci" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" "amdgpu" "msr" ];
-  boot.extraModulePackages = [ ];
+  boot.kernelModules = [ "kvm-amd" "amdgpu" "msr" "v4l2loopback" ];
+  boot.extraModulePackages = [ pkgs.linuxKernel.packages.linux_6_5.v4l2loopback ];
   boot.kernelParams = [
     "amd_pstate=active"
   ];

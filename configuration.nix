@@ -34,6 +34,7 @@ in
     "L+ /home/sidney/.config/discord          - sidney users - /persist/home/.config/discord"
     "L+ /home/sidney/.config/GIMP             - sidney users - /persist/home/.config/GIMP"
     "L+ /home/sidney/.config/keyd             - sidney users - /persist/home/.config/keyd"
+    "L+ /home/sidney/.config/obs-studio       - sidney users - /persist/home/.config/obs-studio"
     "L+ /home/sidney/.config/solaar           - sidney users - /persist/home/.config/solaar"
     "L+ /home/sidney/.config/spotify          - sidney users - /persist/home/.config/spotify"
     "d  /home/sidney/.local                0755 sidney users"
@@ -159,6 +160,7 @@ in
       _1password-gui
       spotify
       gimp-with-plugins
+      obs-studio
       bibata-cursors
       bibata-cursors-translucent
       bleeding.xivlauncher
