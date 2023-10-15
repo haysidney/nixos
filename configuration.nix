@@ -369,6 +369,7 @@ in
         "-H 1600"
         "-f"
         "-o 10"
+        "--cursor /persist/home/.config/nixos/extras/bibata-modern-ice-medium.png"
       ];
     };
   };
