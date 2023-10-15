@@ -30,6 +30,7 @@
     enable = true;
     settings = {
       unredir-if-possible = true;
+      backend = "glx";
     };
     vSync = true;
   };
