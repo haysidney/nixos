@@ -97,7 +97,7 @@ in
           /run/current-system/sw/bin/asusctl profile -P Balanced
           ${pkgs.linuxKernel.packages.linux_6_5.cpupower}/bin/cpupower frequency-set -g powersave
           # When the scaling governor is set to performance we can't edit the epp hint
-          /run/current-system/sw/bin/bash -c "echo "balance_power" | /run/current-system/sw/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference"
+          /run/current-system/sw/bin/bash -c "echo "power" | /run/current-system/sw/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference"
         '';
       };
       "asusd/bat_command" = {
