@@ -40,6 +40,7 @@ in
     "L+ /home/sidney/.config/spotify          - sidney users - /persist/home/.config/spotify"
     "d  /home/sidney/.local                0755 sidney users"
     "d  /home/sidney/.local/share          0755 sidney users"
+    "L+ /home/sidney/.local/share/bottles     - sidney users - /persist/home/.local/share/bottles"
     "L+ /home/sidney/.local/share/Steam       - sidney users - /persist/home/.local/share/Steam"
     "L+ /home/sidney/.local/share/vulkan      - sidney users - /persist/home/.local/share/vulkan"
     "d  /home/sidney/.local/state          0755 sidney users"
@@ -157,6 +158,7 @@ in
       p7zip
       discord
       distrobox
+      bottles
       python312
       transmission
       _1password-gui
