@@ -19,6 +19,7 @@
       extraPackages = with pkgs; [
         dmenu
         i3status
+        autotiling
      ];
     };
   };
