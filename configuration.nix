@@ -30,6 +30,7 @@ in
     "d  /home/sidney/.config               0755 sidney users"
     "L+ /home/sidney/.config/nixos            - sidney users - /persist/home/.config/nixos"
     "L+ /home/sidney/.config/htop             - sidney users - /persist/home/.config/htop"
+    "L+ /home/sidney/.config/btop             - sidney users - /persist/home/.config/btop"
     "L+ /home/sidney/.config/1Password        - sidney users - /persist/home/.config/1Password"
     "L+ /home/sidney/.config/discord          - sidney users - /persist/home/.config/discord"
     "L+ /home/sidney/.config/GIMP             - sidney users - /persist/home/.config/GIMP"
@@ -134,6 +135,7 @@ in
       vim
       keyd
       htop
+      btop
       trash-cli
       rmtrash
       xfce.mousepad
