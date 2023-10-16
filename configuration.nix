@@ -146,7 +146,6 @@ in
       xclip
       lynx
       parted
-      udisks2
       pavucontrol
       feh
       flameshot
@@ -272,6 +271,7 @@ in
       '';
     };
     switcherooControl.enable = true;
+    udisks2.enable = true;
   };
   systemd.services = {
     keyd = {
