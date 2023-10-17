@@ -38,6 +38,7 @@ in
     "L+ /home/sidney/.config/1Password        - sidney users - /persist/home/.config/1Password"
     "L+ /home/sidney/.config/discord          - sidney users - /persist/home/.config/discord"
     "L+ /home/sidney/.config/GIMP             - sidney users - /persist/home/.config/GIMP"
+    "L+ /home/sidney/.config/keepassxc        - sidney users - /persist/home/.config/keepassxc"
     "L+ /home/sidney/.config/keyd             - sidney users - /persist/home/.config/keyd"
     "L+ '/home/sidney/.config/Ledger Live'    - sidney users - /persist/home/.config/Ledger Live"
     "L+ /home/sidney/.config/obs-studio       - sidney users - /persist/home/.config/obs-studio"
@@ -166,6 +167,7 @@ in
       python312
       transmission
       _1password-gui
+      keepassxc
       spotify
       gimp-with-plugins
       obs-studio
@@ -195,6 +197,14 @@ in
           })
         ];
       }))
+#      (keepassxc.overrideAttrs (oldAttrs: rec {
+#        src = fetchFromGitHub {
+#          owner = "keepassxreboot";
+#          repo = "keepassxc";
+#          rev = "feature/1pux-import";
+#          sha256 = "IQNrIsjtCvwpzaMouz0Owp3pdEnF1bNPc2uk+LHz7n8=";
+#        };
+#      }))
     ];
     sessionVariables = {
        EDITOR = "vim";
