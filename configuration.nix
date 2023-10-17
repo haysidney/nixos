@@ -366,10 +366,14 @@ in
         i3config="vim ~/.config/i3/config";
         swayconfig="vim ~/.config/sway/config";
         pkexec="pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY HOME=$HOME";
-        t="tmux new-session \; split-window -v \; select-pane -t 1 \; split-window -h \; select-pane -t 1 \; attach";
+        t=''tmux new-session \; split-window -v \; select-pane -t 1 \; split-window -h \; select-pane -t 1 \; attach'';
         rainfall="python3 /home/sidney/build/rainfall/source/rainfall.py";
         # NixOS
         nixconfig="vim ~/.config/nixos/configuration.nix";
+        nixnow="nix-shell -p";
+        nixnowunstable="nix-shell -I https://github.com/NixOS/nixpkgs/archive/master.tar.gz -p";
+        # Enter dev environment for package
+        nixdev="nix-shell '<nixpkgs>' -A";
         imperm="sudo tree -x /";
         archenter="distrobox enter archlinux-latest";
       };
