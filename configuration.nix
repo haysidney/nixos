@@ -240,7 +240,7 @@ in
   users.users.sidney = {
 #    initialPassword = "1234";
     # Hashed password I yoinked from /etc/shadow after setting my desired password
-    passwordFile = "/persist/passwords/sidney";
+    hashedPasswordFile = "/persist/passwords/sidney";
     isNormalUser = true;
     extraGroups = [ "wheel" "docker" "plugdev" ];
     packages = with pkgs; [
@@ -249,7 +249,7 @@ in
   };
   users.users.root = {
 #    initialPassword = "1234";
-    passwordFile = "/persist/passwords/root";
+    hashedPasswordFile = "/persist/passwords/root";
   };
 
   security = {
@@ -282,9 +282,12 @@ in
         apply_cgroup=true;
         check_disks_schedulers=true;
       };
-      extraRules = ''
-        {"name": "gamescope", "nice": -20}
-      '';
+      extraRules = [
+        {
+          name = "gamescope";
+          nice = -20;
+        }
+      ];
     };
     udev.extraRules = ''
       # HW.1 / Nano
