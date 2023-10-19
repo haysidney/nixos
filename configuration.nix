@@ -20,6 +20,7 @@ in
     [
       ./zephyrus.nix
       ./i3.nix
+#      ./sway.nix
 #      ./dwm.nix
 #      ./plasma.nix
       "${impermanence}/nixos.nix"
@@ -368,6 +369,7 @@ in
         mb="mbsync -a";
         i3config="vim ~/.config/i3/config";
         swayconfig="vim ~/.config/sway/config";
+        startsway="dbus-run-session sway >~/swaylog 2>&1";
         pkexec="pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY HOME=$HOME";
         t=''tmux new-session \; split-window -v \; select-pane -t 1 \; split-window -h \; select-pane -t 1 \; attach'';
         rainfall="python3 /home/sidney/build/rainfall/source/rainfall.py";
