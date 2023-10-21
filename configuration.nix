@@ -170,6 +170,7 @@ in
       bottles
       python312
       transmission_4-gtk
+      mpv
       _1password-gui
       keepassxc
       spotify
