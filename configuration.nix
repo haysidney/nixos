@@ -168,7 +168,7 @@ in
       distrobox
       bottles
       python312
-      transmission
+      transmission_4-gtk
       _1password-gui
       keepassxc
       spotify
