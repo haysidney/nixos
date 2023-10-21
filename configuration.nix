@@ -45,6 +45,7 @@ in
     "L+ /home/sidney/.config/obs-studio       - sidney users - /persist/home/.config/obs-studio"
     "L+ /home/sidney/.config/solaar           - sidney users - /persist/home/.config/solaar"
     "L+ /home/sidney/.config/spotify          - sidney users - /persist/home/.config/spotify"
+    "L+ /home/sidney/.config/transmission     - sidney users - /persist/home/.config/transmission"
     "d  /home/sidney/.local                0755 sidney users"
     "d  /home/sidney/.local/share          0755 sidney users"
     "L+ /home/sidney/.local/share/bottles     - sidney users - /persist/home/.local/share/bottles"
