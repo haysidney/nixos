@@ -146,6 +146,7 @@ in
       keyd
       htop
       btop
+      tldr
       trash-cli
       rmtrash
       xfce.mousepad
