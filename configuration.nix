@@ -165,6 +165,7 @@ in
       ranger
       w3m
       p7zip
+      rar
       discord
       distrobox
       bottles
