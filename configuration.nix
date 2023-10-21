@@ -171,6 +171,7 @@ in
       bottles
       python312
       transmission_4-gtk
+      tremc
       mpv
       _1password-gui
       keepassxc
