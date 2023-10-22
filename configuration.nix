@@ -67,7 +67,6 @@ in
     "L+ /home/sidney/Source                   - sidney users - /persist/home/Source"
     "L+ /home/sidney/Videos                   - sidney users - /persist/home/Videos"
     "L+ /home/sidney/.bash_history            - sidney users - /persist/home/.bash_history"
-    "L+ /home/sidney/.vimrc                   - sidney users - /persist/home/.vimrc"
     "L+ /home/sidney/.Xresources              - sidney users - /persist/home/.Xresources"
   ];
   environment = {
@@ -142,7 +141,48 @@ in
       '';
     };
     systemPackages = with pkgs; [
-      vim
+      (vim-full.customize {
+        vimrcConfig.packages.myVimPackage = with pkgs.vimPlugins; {
+          # loaded on launch
+          start = [ vim-visual-multi ];
+          # manually loadable by calling `:packadd $plugin-name`
+          # however, if a Vim plugin has a dependency that is not explicitly listed in
+          # opt that dependency will always be added to start to avoid confusion.
+#          opt = [ phpCompletion elm-vim ];
+          # To automatically load a plugin when opening a filetype, add vimrc lines like:
+          # autocmd FileType php :packadd phpCompletion
+        };
+        vimrcConfig.customRC = ''
+          set nocp
+          set number
+          set relativenumber
+          syntax on
+          set autoindent
+          set mouse=a
+          set wrap!
+          set showcmd
+          set tabstop=2
+          set shiftwidth=2
+          set expandtab
+          " Remember buffers if opened without a file
+          set viminfo+=%
+          set wildmenu
+          set wildignorecase
+          set wildmode=list:longest,full
+          set splitbelow
+          set splitright
+          set pastetoggle=<C-x>
+          set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
+          "set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<
+          set list
+          vnoremap <C-c> "*y :let @+=@*<CR>
+          nnoremap <C-c> "*yy :let @+=@*<CR>
+          nnoremap <C-p> "+p
+          nnoremap \ :set wrap!<CR>
+          noremap \| :set list!<CR>
+          nnoremap <C-t> :tabnew<CR>
+        '';
+      })
       keyd
       htop
       btop
@@ -152,7 +192,6 @@ in
       xfce.mousepad
       bat
       tree
-      neovim
       xclip
       lynx
       surf
