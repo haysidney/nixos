@@ -147,6 +147,7 @@ in
           # loaded on launch
           start = [
             onedark-vim
+            vim-commentary
             vim-visual-multi
             SudoEdit-vim
             Recover-vim
