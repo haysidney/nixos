@@ -59,6 +59,7 @@ in
     "L+ /home/sidney/.pki                     - sidney users - /persist/home/.pki"
     "L+ /home/sidney/.ssh                     - sidney users - /persist/home/.ssh"
     "L+ /home/sidney/.surf                    - sidney users - /persist/home/.surf"
+    "L+ /home/sidney/.vim                     - sidney users - /persist/home/.vim"
     "L+ /home/sidney/Desktop                  - sidney users - /persist/home/Desktop"
     "L+ /home/sidney/Documents                - sidney users - /persist/home/Documents"
     "L+ /home/sidney/Downloads                - sidney users - /persist/home/Downloads"
@@ -145,6 +146,7 @@ in
         vimrcConfig.packages.myVimPackage = with pkgs.vimPlugins; {
           # loaded on launch
           start = [
+            onedark-vim
             vim-visual-multi
             SudoEdit-vim
             Recover-vim
@@ -168,6 +170,7 @@ in
           # autocmd FileType php :packadd phpCompletion
         };
         vimrcConfig.customRC = ''
+          colorscheme onedark
           set nocp
           set number
           set relativenumber
@@ -191,6 +194,8 @@ in
           set backspace=indent,eol,start
           "set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<
           set list
+          let g:session_autosave = 'no'
+
           vnoremap <C-c> "*y :let @+=@*<CR>
           nnoremap <C-c> "*yy :let @+=@*<CR>
           nnoremap <C-p> "+p
@@ -210,6 +215,8 @@ in
           imap <S-Down> <Esc>v<Down>
           imap <S-Left> <Esc>v<Left>
           imap <S-Right> <Esc>v<Right>
+
+          hi Normal guibg=NONE ctermbg=NONE
         '';
       })
       keyd
