@@ -144,7 +144,22 @@ in
       (vim-full.customize {
         vimrcConfig.packages.myVimPackage = with pkgs.vimPlugins; {
           # loaded on launch
-          start = [ vim-visual-multi ];
+          start = [
+            vim-visual-multi
+            SudoEdit-vim
+            Recover-vim
+            vim-lastplace
+            vim-misc
+            (pkgs.vimUtils.buildVimPlugin {
+              name = "vim-session";
+              src = pkgs.fetchFromGitHub {
+                owner = "xolox";
+                repo = "vim-session";
+                rev = "2.13.1";
+                hash = "sha256-a+yRjpShuMMHspa2VtqkUUlNyR96TiiAKuldDKAb02Q=";
+              };
+            })
+          ];
           # manually loadable by calling `:packadd $plugin-name`
           # however, if a Vim plugin has a dependency that is not explicitly listed in
           # opt that dependency will always be added to start to avoid confusion.
@@ -173,6 +188,7 @@ in
           set splitright
           set pastetoggle=<C-x>
           set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
+          set backspace=indent,eol,start
           "set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<
           set list
           vnoremap <C-c> "*y :let @+=@*<CR>
@@ -181,6 +197,19 @@ in
           nnoremap \ :set wrap!<CR>
           noremap \| :set list!<CR>
           nnoremap <C-t> :tabnew<CR>
+
+          nmap <S-Up> v<Up>
+          nmap <S-Down> v<Down>
+          nmap <S-Left> v<Left>
+          nmap <S-Right> v<Right>
+          vmap <S-Up> <Up>
+          vmap <S-Down> <Down>
+          vmap <S-Left> <Left>
+          vmap <S-Right> <Right>
+          imap <S-Up> <Esc>v<Up>
+          imap <S-Down> <Esc>v<Down>
+          imap <S-Left> <Esc>v<Left>
+          imap <S-Right> <Esc>v<Right>
         '';
       })
       keyd
