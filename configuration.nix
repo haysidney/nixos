@@ -53,6 +53,7 @@ in
     "L+ /home/sidney/.local/share/vulkan      - sidney users - /persist/home/.local/share/vulkan"
     "d  /home/sidney/.local/state          0755 sidney users"
     "L+ /home/sidney/.local/state/wireplumber - sidney users - /persist/home/.local/state/wireplumber"
+    "L+ /home/sidney/.ollama                  - sidney users - /persist/home/.ollama"
     "L+ /home/sidney/.gitconfig               - sidney users - /persist/home/.gitconfig"
     "L+ /home/sidney/.steam                   - sidney users - /persist/home/.steam"
     "L+ /home/sidney/.mozilla                 - sidney users - /persist/home/.mozilla"
@@ -205,6 +206,38 @@ in
           })
         ];
       }))
+      (buildGoModule rec {
+        pname = "ollama";
+        version = "0.1.4";
+
+        src = fetchFromGitHub {
+          owner = "jmorganca";
+          repo = "ollama";
+          rev = "v${version}";
+          hash = "sha256-idsFcjsRD1zPmG742gnYQJcgSWDA2DLMHksCFNe2GiY=";
+        };
+
+        buildInputs = lib.optionals stdenv.isDarwin (with darwin.apple_sdk_11_0.frameworks; [
+          Accelerate
+          MetalPerformanceShaders
+          MetalKit
+        ]);
+
+        vendorHash = "sha256-IgEf/WOc1eNGCif1fViIFxbgZAd6mHBqfxcaqH/WvGg=";
+
+        ldflags = [ "-s" "-w" "-X 'main.Version=v${version}'" ];
+
+        patches = [
+          ./extras/ollama-version.diff
+        ];
+
+        meta = with lib; {
+          description = "Get up and running with large language models locally";
+          homepage = "https://github.com/jmorganca/ollama";
+          license = licenses.mit;
+          maintainers = with maintainers; [ dit7ya ];
+        };
+      })
 #      (keepassxc.overrideAttrs (oldAttrs: rec {
 #        src = fetchFromGitHub {
 #          owner = "keepassxreboot";
