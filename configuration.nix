@@ -153,6 +153,7 @@ in
             Recover-vim
             vim-lastplace
             vim-misc
+            vim-airline
             (pkgs.vimUtils.buildVimPlugin {
               name = "vim-session";
               src = pkgs.fetchFromGitHub {
@@ -195,7 +196,6 @@ in
           set backspace=indent,eol,start
           "set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<
           set list
-          let g:session_autosave = 'no'
 
           vnoremap <C-c> "*y :let @+=@*<CR>
           nnoremap <C-c> "*yy :let @+=@*<CR>
@@ -218,6 +218,10 @@ in
           imap <S-Right> <Esc>v<Right>
 
           hi Normal guibg=NONE ctermbg=NONE
+
+          set noshowmode
+          let g:session_autosave = 'no'
+          let g:airline_symbols_ascii = 1
         '';
       })
       keyd
