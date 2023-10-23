@@ -69,6 +69,7 @@ in
     "L+ /home/sidney/Videos                   - sidney users - /persist/home/Videos"
     "L+ /home/sidney/.bash_history            - sidney users - /persist/home/.bash_history"
     "L+ /home/sidney/.Xresources              - sidney users - /persist/home/.Xresources"
+    "L+ /home/sidney/.viminfo                 - sidney users - /persist/home/.viminfo"
   ];
   environment = {
     persistence."/persist/system" = {
@@ -154,13 +155,50 @@ in
             vim-lastplace
             vim-misc
             vim-airline
+            vim-css-color
             (pkgs.vimUtils.buildVimPlugin {
               name = "vim-session";
               src = pkgs.fetchFromGitHub {
                 owner = "xolox";
                 repo = "vim-session";
                 rev = "2.13.1";
-                hash = "sha256-a+yRjpShuMMHspa2VtqkUUlNyR96TiiAKuldDKAb02Q=";
+                sha256 = "a+yRjpShuMMHspa2VtqkUUlNyR96TiiAKuldDKAb02Q=";
+              };
+            })
+            (pkgs.vimUtils.buildVimPlugin {
+              name = "vim-textobj-user";
+              src = pkgs.fetchFromGitHub {
+                owner = "kana";
+                repo = "vim-textobj-user";
+                rev = "0.7.6";
+                sha256 = "bIdIIUS836aCY1mqlUrgJJ/UkFuTjnYUsk9PKfvElpc=";
+              };
+            })
+            (pkgs.vimUtils.buildVimPlugin {
+              name = "vim-textobj-line";
+              src = pkgs.fetchFromGitHub {
+                owner = "kana";
+                repo = "vim-textobj-line";
+                rev = "0.0.2";
+                sha256 = "k6kjmwNqmklVaCigMzBL7xpuMAezqT2G3ZcPtCp791Y=";
+              };
+            })
+            (pkgs.vimUtils.buildVimPlugin {
+              name = "vim-textobj-entire";
+              src = pkgs.fetchFromGitHub {
+                owner = "kana";
+                repo = "vim-textobj-entire";
+                rev = "0.0.4";
+                sha256 = "te7ljHY7lzu+fmbakTkPKxF312+Q0LozTLazxQvSYE8=";
+              };
+            })
+            (pkgs.vimUtils.buildVimPlugin {
+              name = "vim-textobj-indent";
+              src = pkgs.fetchFromGitHub {
+                owner = "kana";
+                repo = "vim-textobj-indent";
+                rev = "0.0.6";
+                sha256 = "oFzUPG+IOkbKZ2gU/kduQ3G/LsLDlEjFhRP0BHBE+1Q=";
               };
             })
           ];
@@ -186,6 +224,7 @@ in
           set expandtab
           " Remember buffers if opened without a file
           set viminfo+=%
+          set path+=**
           set wildmenu
           set wildignorecase
           set wildmode=list:longest,full
@@ -194,15 +233,11 @@ in
           set pastetoggle=<C-x>
           set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
           set backspace=indent,eol,start
-          "set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<
           set list
+          set ttimeoutlen=50
 
-          vnoremap <C-c> "*y :let @+=@*<CR>
-          nnoremap <C-c> "*yy :let @+=@*<CR>
-          nnoremap <C-p> "+p
           nnoremap \ :set wrap!<CR>
           noremap \| :set list!<CR>
-          nnoremap <C-t> :tabnew<CR>
 
           nmap <S-Up> v<Up>
           nmap <S-Down> v<Down>
