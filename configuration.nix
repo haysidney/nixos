@@ -92,6 +92,24 @@ in
 
         [main]
         capslock = f13
+        volumeup = command(pactl set-sink-volume @DEFAULT_SINK@ +5%)
+        volumedown = command(pactl set-sink-volume @DEFAULT_SINK@ -5%)
+        mute = command(pactl set-sink-mute @DEFAULT_SINK@ toggle)
+        micmute = command(pactl set-source-mute @DEFAULT_SOURCE@ toggle)
+        brightnessup = command(brightnessctl set +10%)
+        brightnessdown = command(brightnessctl set 10%-)
+        play = command(playerctl play-pause)
+        pause = command(playerctl play-pause)
+        playpause = command(playerctl play-pause)
+        next = command(playerctl next)
+        nextsong = command(playerctl next)
+        prev = command(playerctl previous)
+        previoussong = command(playerctl previous)
+        # Asus Zephyrus Specific
+        f21 = command(xinput set-prop "ASUE120A:00 04F3:319B Touchpad" "Device Enabled" $((1-$(xinput list-props "ASUE120A:00 04F3:319B Touchpad" | grep "Device Enabled" | grep -o "[01]$"))))
+        prog3 = command(asusctl led-mode -n)
+        kbdillumup = command(asusctl -n)
+        kbdillumdown = command(asusctl -p)
         # Explicitly define these so that FFXIV doesn't
         # prevent me from switching workspaces
         [meta]
@@ -339,6 +357,24 @@ in
     };
     interactiveShellInit = "bind -s 'set completion-ignore-case on'";
   };
+  nixpkgs = {
+    overlays = [
+      (final: prev: {
+        keyd = prev.keyd.overrideAttrs (old: {
+          src = prev.fetchFromGitHub {
+            owner = "rvaiya";
+            repo = "keyd";
+            rev = "v2.4.3";
+            sha256 = "NhZnFIdK0yHgFR+rJm4cW+uEhuQkOpCSLwlXNQy6jas=";
+          };
+          patches = [ ./extras/keyd-2.4.3.diff ];
+        });
+      })
+    ];
+    config = {
+      allowUnfree = true;
+    };
+  };
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -448,7 +484,6 @@ in
       wantedBy = [ "default.target" ];
     };
   };
-  nixpkgs.config.allowUnfree = true;
   nix.extraOptions = "experimental-features = nix-command flakes";
 
   virtualisation.docker.enable = true;

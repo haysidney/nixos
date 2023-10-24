@@ -1,0 +1,12 @@
+diff --git a/Makefile b/Makefile
+index 1f9dcce..9409c73 100644
+--- a/Makefile
++++ b/Makefile
+@@ -2,6 +2,7 @@
+ VERSION=2.4.3
+ COMMIT=$(shell git describe --no-match --always --abbrev=7 --dirty)
+ VKBD=uinput
++DESTDIR=
+ PREFIX=/usr
+ 
+ CONFIG_DIR=/etc/keyd
