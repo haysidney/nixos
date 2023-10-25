@@ -1,6 +1,8 @@
 { config, lib, pkgs, ... }:
 {
   systemd.tmpfiles.rules = [
+    "L+ /home/sidney/.config/kcminputrc          - sidney users - /persist/home/.config/kcminputrc"
+    "L+ /home/sidney/.config/touchpadxlibinputrc - sidney users - /persist/home/.config/touchpadxlibinputrc"
     "L+ /home/sidney/.Xresources                 - sidney users - /persist/home/.Xresources"
   ];
 
