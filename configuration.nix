@@ -226,12 +226,6 @@ in
               };
             })
           ];
-          # manually loadable by calling `:packadd $plugin-name`
-          # however, if a Vim plugin has a dependency that is not explicitly listed in
-          # opt that dependency will always be added to start to avoid confusion.
-#          opt = [ phpCompletion elm-vim ];
-          # To automatically load a plugin when opening a filetype, add vimrc lines like:
-          # autocmd FileType php :packadd phpCompletion
         };
         vimrcConfig.customRC = ''
           colorscheme onedark
@@ -352,7 +346,6 @@ in
        XL_SECRET_PROVIDER = "FILE"; # For XIVLauncher
        NIXOS_CONFIG = "/persist/home/.config/nixos/configuration.nix";
        WWW_HOME = "https://lite.duckduckgo.com/lite";
-#      XDG_CURRENT_DESKTOP = "i3";
     };
     interactiveShellInit = "bind -s 'set completion-ignore-case on'";
   };
@@ -374,7 +367,6 @@ in
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
     keyMap = "colemak";
-  #   useXkbConfig = true; # use xkbOptions in tty.
   };
 
   users.groups = {
