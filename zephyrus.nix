@@ -84,7 +84,6 @@ in
   environment = {
     sessionVariables = { AMD_VULKAN_ICD = "RADV"; };
     systemPackages = with pkgs; [
-      blender-hip
       brightnessctl
       linuxKernel.packages.linux_6_5.cpupower
       solaar
