@@ -88,29 +88,28 @@ in
       "keyd/default.conf".text = ''
         [ids]
         *
-        -1532:00b4
-        -068e:00b5
+        0b05:19b6
 
         [main]
         capslock = f13
-        volumeup = command(pactl set-sink-volume @DEFAULT_SINK@ +5%)
-        volumedown = command(pactl set-sink-volume @DEFAULT_SINK@ -5%)
-        mute = command(pactl set-sink-mute @DEFAULT_SINK@ toggle)
-        micmute = command(pactl set-source-mute @DEFAULT_SOURCE@ toggle)
-        brightnessup = command(brightnessctl set +10%)
-        brightnessdown = command(brightnessctl set 10%-)
-        play = command(playerctl play-pause)
-        pause = command(playerctl play-pause)
-        playpause = command(playerctl play-pause)
-        next = command(playerctl next)
-        nextsong = command(playerctl next)
-        prev = command(playerctl previous)
-        previoussong = command(playerctl previous)
+        volumeup = command(/run/current-system/sw/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%)
+        volumedown = command(/run/current-system/sw/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%)
+        mute = command(/run/current-system/sw/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle)
+        micmute = command(/run/current-system/sw/bin/pactl set-source-mute @DEFAULT_SOURCE@ toggle)
+        brightnessup = command(/run/current-system/sw/bin/brightnessctl set +10%)
+        brightnessdown = command(/run/current-system/sw/bin/brightnessctl set 10%-)
+        play = command(/run/current-system/sw/bin/playerctl play-pause)
+        pause = command(/run/current-system/sw/bin/playerctl play-pause)
+        playpause = command(/run/current-system/sw/bin/playerctl play-pause)
+        next = command(/run/current-system/sw/bin/playerctl next)
+        nextsong = command(/run/current-system/sw/bin/playerctl next)
+        prev = command(/run/current-system/sw/bin/playerctl previous)
+        previoussong = command(/run/current-system/sw/bin/playerctl previous)
         # Asus Zephyrus Specific
-        f21 = command(xinput set-prop "ASUE120A:00 04F3:319B Touchpad" "Device Enabled" $((1-$(xinput list-props "ASUE120A:00 04F3:319B Touchpad" | grep "Device Enabled" | grep -o "[01]$"))))
-        prog3 = command(asusctl led-mode -n)
-        kbdillumup = command(asusctl -n)
-        kbdillumdown = command(asusctl -p)
+        f21 = command(DISPLAY=:0 XAUTHORITY=/home/sidney/.Xauthority /etc/keyd/touchpadtoggle.sh)
+        prog3 = command(/run/current-system/sw/bin/asusctl led-mode -n)
+        kbdillumup = command(/run/current-system/sw/bin/asusctl -n)
+        kbdillumdown = command(/run/current-system/sw/bin/asusctl -p)
         # Explicitly define these so that FFXIV doesn't
         # prevent me from switching workspaces
         [meta]
@@ -152,6 +151,12 @@ in
         down = volumedown
         rightshift = playpause
       '';
+      "keyd/touchpadtoggle.sh" = {
+        mode = "0755";
+        text = ''
+          /run/current-system/sw/bin/xinput set-prop "ASUE120A:00 04F3:319B Touchpad" "Device Enabled" $((1-$(/run/current-system/sw/bin/xinput list-props "ASUE120A:00 04F3:319B Touchpad" | /run/current-system/sw/bin/grep "Device Enabled" | /run/current-system/sw/bin/grep -o "[01]$")))
+        '';
+      };
       "wireplumber/bluetooth.lua.d/51-bluez-config.lua".text = ''
         bluez_monitor.properties = {
           ["bluez5.enable-sbc-xq"] = true,
@@ -352,19 +357,6 @@ in
     interactiveShellInit = "bind -s 'set completion-ignore-case on'";
   };
   nixpkgs = {
-    overlays = [
-      (final: prev: {
-        keyd = prev.keyd.overrideAttrs (old: {
-          src = prev.fetchFromGitHub {
-            owner = "rvaiya";
-            repo = "keyd";
-            rev = "v2.4.3";
-            sha256 = "NhZnFIdK0yHgFR+rJm4cW+uEhuQkOpCSLwlXNQy6jas=";
-          };
-          patches = [ ./extras/keyd-2.4.3.diff ];
-        });
-      })
-    ];
     config = {
       allowUnfree = true;
     };
