@@ -1,5 +1,9 @@
 { config, lib, pkgs, ... }:
 {
+  systemd.tmpfiles.rules = [
+    "L+ /home/sidney/.Xresources                 - sidney users - /persist/home/.Xresources"
+  ];
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 

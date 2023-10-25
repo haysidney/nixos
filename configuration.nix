@@ -71,7 +71,6 @@ in
     "L+ /home/sidney/Source                   - sidney users - /persist/home/Source"
     "L+ /home/sidney/Videos                   - sidney users - /persist/home/Videos"
     "L+ /home/sidney/.bash_history            - sidney users - /persist/home/.bash_history"
-    "L+ /home/sidney/.Xresources              - sidney users - /persist/home/.Xresources"
   ];
   environment = {
     persistence."/persist/system" = {

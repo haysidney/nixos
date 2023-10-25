@@ -1,5 +1,8 @@
 { config, lib, pkgs, ... }:
 {
+  systemd.tmpfiles.rules = [
+    "L+ /home/sidney/.Xresources - sidney users - /persist/home/.Xresources"
+  ];
 
   services.xserver = {
     enable = true;
