@@ -340,14 +340,6 @@ in
           })
         ];
       }))
-#      (keepassxc.overrideAttrs (oldAttrs: rec {
-#        src = fetchFromGitHub {
-#          owner = "keepassxreboot";
-#          repo = "keepassxc";
-#          rev = "feature/1pux-import";
-#          sha256 = "IQNrIsjtCvwpzaMouz0Owp3pdEnF1bNPc2uk+LHz7n8=";
-#        };
-#      }))
     ];
     sessionVariables = {
        EDITOR = "vim";
