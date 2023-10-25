@@ -16,6 +16,7 @@
   programs.dconf.enable = true; # Fixes gtk themes
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.displayManager.defaultSession = "plasmawayland";
 
   services.dbus.enable = true;
   xdg.portal = {
