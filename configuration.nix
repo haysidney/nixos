@@ -71,7 +71,6 @@ in
     "L+ /home/sidney/Videos                   - sidney users - /persist/home/Videos"
     "L+ /home/sidney/.bash_history            - sidney users - /persist/home/.bash_history"
     "L+ /home/sidney/.Xresources              - sidney users - /persist/home/.Xresources"
-    "L+ /home/sidney/.viminfo                 - sidney users - /persist/home/.viminfo"
   ];
   environment = {
     persistence."/persist/system" = {
@@ -243,7 +242,7 @@ in
           set shiftwidth=2
           set expandtab
           " Remember buffers if opened without a file
-          set viminfo+=%
+          set viminfo+=%,n/persist/home/.viminfo
           set path+=**
           set wildmenu
           set wildignorecase
