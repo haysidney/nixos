@@ -372,6 +372,22 @@ in
           patches = [ ./extras/keyd-2.4.3.diff ];
         });
       })
+      (final: prev: {
+        keyd = prev.vim-full.overrideAttrs (old: {
+          src = prev.fetchFromGitHub {
+            owner = "vim";
+            repo = "vim";
+            rev = "v9.0.1897";
+            sha256 = "ywxJ9evXWbqZ6o6EqDIQWK16J05McAdvPl0Y9cW5Zvc=";
+          };
+          patches = [
+            (prev.fetchpatch {
+              url = "https://raw.githubusercontent.com/NixOS/nixpkgs/nixos-unstable/pkgs/applications/editors/vim/cflags-prune.diff";
+              sha256 = "iotP1NZ57g2qSiEgokLdYMQZvwD0LPBMxdd16ovkEeo=";
+            })
+          ];
+        });
+      })
     ];
     config = {
       allowUnfree = true;
