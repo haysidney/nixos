@@ -23,6 +23,7 @@ in
 #      ./sway.nix
 #      ./dwm.nix
 #      ./plasma.nix
+#      ./icewm.nix
       "${impermanence}/nixos.nix"
       "${home-manager}/nixos"
     ];
