@@ -575,7 +575,6 @@ in
       enable = true;
       args = [
         "--rt"
-        "--immediate-flips"
         "-W 2560"
         "-H 1600"
         "-f"
