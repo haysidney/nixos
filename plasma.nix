@@ -2,12 +2,14 @@
 {
   imports =
     [
-      ./plasma-xorg.nix
+      ./plasma-wayland.nix
     ];
   systemd.tmpfiles.rules = [
     "L+ /home/sidney/.config/plasma-org.kde.plasma.desktop-appletsrc - sidney users - /persist/home/.config/plasma-org.kde.plasma.desktop-appletsrc"
     "L+ /home/sidney/.config/plasmashellrc                           - sidney users - /persist/home/.config/plasmashellrc"
     "L+ /home/sidney/.config/kwinrc                                  - sidney users - /persist/home/.config/kwinrc"
+    "L+ /home/sidney/.config/kglobalshortcutsrc                      - sidney users - /persist/home/.config/kglobalshortcutsrc"
+    "L+ /home/sidney/.config/khotkeysrc                              - sidney users - /persist/home/.config/khotkeysrc"
     "L+ /home/sidney/.config/powermanagementprofilesrc               - sidney users - /persist/home/.config/powermanagementprofilesrc"
     "L+ /home/sidney/.config/powerdevilrc                            - sidney users - /persist/home/.config/powerdevilrc"
     "L+ /home/sidney/.config/kdeglobals                              - sidney users - /persist/home/.config/kdeglobals"

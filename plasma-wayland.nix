@@ -2,7 +2,6 @@
 {
   systemd.tmpfiles.rules = [
     "L+ /home/sidney/.config/kcminputrc          - sidney users - /persist/home/.config/kcminputrc"
-    "L+ /home/sidney/.Xresources                 - sidney users - /persist/home/.Xresources"
   ];
 
   # Enable touchpad support (enabled default in most desktopManager).
