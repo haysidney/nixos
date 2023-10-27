@@ -19,10 +19,10 @@ in
   imports =
     [
       ./zephyrus.nix
-#      ./i3.nix
+      ./i3.nix
 #      ./sway.nix
 #      ./dwm.nix
-      ./plasma.nix
+#      ./plasma.nix
 #      ./icewm.nix
 #      ./wayfire.nix
       "${impermanence}/nixos.nix"
@@ -293,7 +293,6 @@ in
       surf
       parted
       pavucontrol
-      feh
       flameshot
       neofetch
       killall

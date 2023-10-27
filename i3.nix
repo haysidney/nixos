@@ -123,6 +123,7 @@
     systemPackages = with pkgs; [
       polkit_gnome
       xorg.xhost
+      feh
     ];
   };
 }
