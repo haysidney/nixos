@@ -90,6 +90,8 @@ in
       "keyd/default.conf".text = ''
         [ids]
         *
+        -1532:00b4
+        -068e:00b5
         0b05:19b6
 
         [main]
@@ -108,7 +110,7 @@ in
 #        prev = command(/run/current-system/sw/bin/playerctl previous)
 #        previoussong = command(/run/current-system/sw/bin/playerctl previous)
         # Asus Zephyrus Specific
-        f21 = command(DISPLAY=:0 XAUTHORITY=/home/sidney/.Xauthority /etc/keyd/touchpadtoggle.sh)
+#        f21 = command(DISPLAY=:0 XAUTHORITY=/home/sidney/.Xauthority /etc/keyd/touchpadtoggle.sh)
         prog3 = command(/run/current-system/sw/bin/asusctl led-mode -n)
         kbdillumup = command(/run/current-system/sw/bin/asusctl -n)
         kbdillumdown = command(/run/current-system/sw/bin/asusctl -p)
