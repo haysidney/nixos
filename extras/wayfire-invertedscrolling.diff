@@ -1,0 +1,13 @@
+diff --git a/src/core/seat/pointer.cpp b/src/core/seat/pointer.cpp
+index 3e350284..cbeb216f 100644
+--- a/src/core/seat/pointer.cpp
++++ b/src/core/seat/pointer.cpp
+@@ -345,7 +345,7 @@ void wf::pointer_t::handle_pointer_axis(wlr_pointer_axis_event *ev,
+     /* Calculate speed settings */
+     double mult = ev->source == WLR_AXIS_SOURCE_FINGER ?
+         wf::pointing_device_t::config.touchpad_scroll_speed :
+-        wf::pointing_device_t::config.mouse_scroll_speed;
++        -wf::pointing_device_t::config.mouse_scroll_speed;
+ 
+     ev->delta *= mult;
+     ev->delta_discrete *= mult;
