@@ -242,6 +242,8 @@ in
           set autoindent
           set mouse=a
           set wrap!
+          set ignorecase
+          set smartcase
           set showcmd
           set tabstop=2
           set shiftwidth=2
