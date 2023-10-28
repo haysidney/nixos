@@ -37,13 +37,14 @@
   };
 
   services.dbus.enable = true;
-#  xdg.portal = {
-#    enable = true;
-#    wlr.enable = true;
-#    xdgOpenUsePortal = true;
+  services.flatpak.enable = true;
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    xdgOpenUsePortal = true;
 #    # gtk portal needed to make gtk apps happy
-#    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-#  };
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
 #
   # bash script to let dbus know about important env variables and
   # propagate them to relevent services run at the end of sway config
@@ -85,13 +86,18 @@
 
   environment = {
     sessionVariables = {
+      XDG_CURRENT_DESKTOP = "sway";
+      XCURSOR_SIZE = "64";
+      XCURSOR_THEME = "Bibata-Modern-Ice";
+      MOZ_ENABLE_WAYLAND = "1";
+      NIXOS_OZONE_WL = "1";
       GDK_SCALE = "1.5";
       QT_FONT_DPI = "120";
     };
     etc = {
       "sway/config".source = ./extras/sway.conf;
       "i3status.conf".source = ./extras/i3status.conf;
-      "i3/elevated.sh" = {
+      "sway/elevated.sh" = {
         mode = "0755";
         text = ''
           pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY HOME=$HOME solaar -w hide
@@ -102,9 +108,11 @@
       polkit_gnome
 #      dbus-sway-environment
 #      configure-gtk
+      xwaylandvideobridge
       mako
+      libnotify
       wl-clipboard
-      dmenu
+      rofi
       i3status
       autotiling
     ];

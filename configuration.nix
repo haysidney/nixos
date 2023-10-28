@@ -39,6 +39,7 @@ in
     "L+ /home/sidney/.config/nixos                - sidney users - /persist/home/.config/nixos"
     "L+ /home/sidney/.config/htop                 - sidney users - /persist/home/.config/htop"
     "L+ /home/sidney/.config/btop                 - sidney users - /persist/home/.config/btop"
+    "L+ /home/sidney/.config/gtk-3.0              - sidney users - /persist/home/.config/gtk-3.0"
     "L+ /home/sidney/.config/1Password            - sidney users - /persist/home/.config/1Password"
     "L+ /home/sidney/.config/discord              - sidney users - /persist/home/.config/discord"
     "L+ /home/sidney/.config/GIMP                 - sidney users - /persist/home/.config/GIMP"
@@ -50,6 +51,9 @@ in
     "L+ /home/sidney/.config/solaar               - sidney users - /persist/home/.config/solaar"
     "L+ /home/sidney/.config/spotify              - sidney users - /persist/home/.config/spotify"
     "L+ /home/sidney/.config/transmission         - sidney users - /persist/home/.config/transmission"
+    "L+ /home/sidney/.config/xsettingsd           - sidney users - /persist/home/.config/xsettingsd"
+    "L+ /home/sidney/.gtkrc-2.0                   - sidney users - /persist/home/.gtkrc-2.0"
+    "L+ /home/sidney/.icons                       - sidney users - /persist/home/.icons"
     "d  /home/sidney/.local                    0755 sidney users"
     "d  /home/sidney/.local/share              0755 sidney users"
     "L+ /home/sidney/.local/share/applications    - sidney users - /persist/home/.local/share/applications"
@@ -515,7 +519,7 @@ in
         crt="cool-retro-term";
         i3config="vim ~/.config/i3/config";
         swayconfig="vim ~/.config/sway/config";
-        startsway="dbus-run-session sway >~/swaylog 2>&1";
+        startsway="${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 & dbus-run-session sway >~/swaylog 2>&1";
         pkexec="pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY HOME=$HOME";
         t=''tmux new-session \; split-window -v \; select-pane -t 1 \; split-window -h \; select-pane -t 1 \; attach'';
         tmux="tmux -2";
