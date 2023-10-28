@@ -40,13 +40,12 @@
   };
 
   services.dbus.enable = true;
-#  xdg.portal = {
-#    enable = true;
-#    #wlr.enable = true;
-#    xdgOpenUsePortal = true;
-#    # gtk portal needed to make gtk apps happy
-#    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-#  };
+  services.flatpak.enable = true;
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
 
   environment = {
     etc = {
@@ -119,6 +118,9 @@
           pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY HOME=$HOME solaar -w hide
         '';
       };
+    };
+    sessionVariables = {
+      XDG_CURRENT_DESKTOP = "i3";
     };
     systemPackages = with pkgs; [
       polkit_gnome
