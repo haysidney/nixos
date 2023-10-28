@@ -59,6 +59,7 @@ in
     "L+ /home/sidney/.local/share/applications    - sidney users - /persist/home/.local/share/applications"
     "L+ /home/sidney/.local/share/bottles         - sidney users - /persist/home/.local/share/bottles"
     "L+ /home/sidney/.local/share/cool-retro-term - sidney users - /persist/home/.local/share/cool-retro-term"
+    "L+ /home/sidney/.local/share/flatpak         - sidney users - /persist/home/.local/share/flatpak"
     "L+ /home/sidney/.local/share/openttd         - sidney users - /persist/home/.local/share/openttd"
     "L+ /home/sidney/.local/share/Steam           - sidney users - /persist/home/.local/share/Steam"
     "L+ /home/sidney/.local/share/vulkan          - sidney users - /persist/home/.local/share/vulkan"
