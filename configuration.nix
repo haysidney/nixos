@@ -519,10 +519,10 @@ in
         tmux="tmux -2";
         rainfall="python3 /home/sidney/build/rainfall/source/rainfall.py";
         # LLM
-        initllm="docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama";
-        startllm="docker start ollama";
+        llminit="docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama";
+        llmstart="docker start ollama";
         llm="docker exec -it ollama ollama run";
-        stopllm="docker stop ollama";
+        llmstop="docker stop ollama";
         # NixOS
         nixconfig="vim ~/.config/nixos/configuration.nix";
         nixnow="nix-shell -p";
