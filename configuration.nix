@@ -31,49 +31,50 @@ in
     ];
 
   systemd.tmpfiles.rules = [
-    "d  /mnt                                0755 root root"
-    "d  /home/sidney/.cache                 0755 sidney users"
-    "L+ /home/sidney/.cache/spotify            - sidney users - /persist/home/.cache/spotify"
-    "L+ /home/sidney/.cert                     - sidney users - /persist/home/.cert"
-    "d  /home/sidney/.config                0755 sidney users"
-    "L+ /home/sidney/.config/nixos             - sidney users - /persist/home/.config/nixos"
-    "L+ /home/sidney/.config/htop              - sidney users - /persist/home/.config/htop"
-    "L+ /home/sidney/.config/btop              - sidney users - /persist/home/.config/btop"
-    "L+ /home/sidney/.config/1Password         - sidney users - /persist/home/.config/1Password"
-    "L+ /home/sidney/.config/discord           - sidney users - /persist/home/.config/discord"
-    "L+ /home/sidney/.config/GIMP              - sidney users - /persist/home/.config/GIMP"
-    "L+ /home/sidney/.config/keepassxc         - sidney users - /persist/home/.config/keepassxc"
-    "L+ /home/sidney/.config/keyd              - sidney users - /persist/home/.config/keyd"
-    "L+ '/home/sidney/.config/Ledger Live'     - sidney users - /persist/home/.config/Ledger Live"
-    "L+ /home/sidney/.config/obs-studio        - sidney users - /persist/home/.config/obs-studio"
-    "L+ /home/sidney/.config/openttd           - sidney users - /persist/home/.config/openttd"
-    "L+ /home/sidney/.config/solaar            - sidney users - /persist/home/.config/solaar"
-    "L+ /home/sidney/.config/spotify           - sidney users - /persist/home/.config/spotify"
-    "L+ /home/sidney/.config/transmission      - sidney users - /persist/home/.config/transmission"
-    "d  /home/sidney/.local                 0755 sidney users"
-    "d  /home/sidney/.local/share           0755 sidney users"
-    "L+ /home/sidney/.local/share/applications - sidney users - /persist/home/.local/share/applications"
-    "L+ /home/sidney/.local/share/bottles      - sidney users - /persist/home/.local/share/bottles"
-    "L+ /home/sidney/.local/share/openttd      - sidney users - /persist/home/.local/share/openttd"
-    "L+ /home/sidney/.local/share/Steam        - sidney users - /persist/home/.local/share/Steam"
-    "L+ /home/sidney/.local/share/vulkan       - sidney users - /persist/home/.local/share/vulkan"
-    "d  /home/sidney/.local/state           0755 sidney users"
-    "L+ /home/sidney/.local/state/wireplumber  - sidney users - /persist/home/.local/state/wireplumber"
-    "L+ /home/sidney/.gitconfig                - sidney users - /persist/home/.gitconfig"
-    "L+ /home/sidney/.steam                    - sidney users - /persist/home/.steam"
-    "L+ /home/sidney/.mozilla                  - sidney users - /persist/home/.mozilla"
-    "L+ /home/sidney/.pki                      - sidney users - /persist/home/.pki"
-    "L+ /home/sidney/.ssh                      - sidney users - /persist/home/.ssh"
-    "L+ /home/sidney/.surf                     - sidney users - /persist/home/.surf"
-    "L+ /home/sidney/.vim                      - sidney users - /persist/home/.vim"
-    "L+ /home/sidney/Desktop                   - sidney users - /persist/home/Desktop"
-    "L+ /home/sidney/Documents                 - sidney users - /persist/home/Documents"
-    "L+ /home/sidney/Downloads                 - sidney users - /persist/home/Downloads"
-    "L+ /home/sidney/Music                     - sidney users - /persist/home/Music"
-    "L+ /home/sidney/Pictures                  - sidney users - /persist/home/Pictures"
-    "L+ /home/sidney/Source                    - sidney users - /persist/home/Source"
-    "L+ /home/sidney/Videos                    - sidney users - /persist/home/Videos"
-    "L+ /home/sidney/.bash_history             - sidney users - /persist/home/.bash_history"
+    "d  /mnt                                   0755 root root"
+    "d  /home/sidney/.cache                    0755 sidney users"
+    "L+ /home/sidney/.cache/spotify               - sidney users - /persist/home/.cache/spotify"
+    "L+ /home/sidney/.cert                        - sidney users - /persist/home/.cert"
+    "d  /home/sidney/.config                   0755 sidney users"
+    "L+ /home/sidney/.config/nixos                - sidney users - /persist/home/.config/nixos"
+    "L+ /home/sidney/.config/htop                 - sidney users - /persist/home/.config/htop"
+    "L+ /home/sidney/.config/btop                 - sidney users - /persist/home/.config/btop"
+    "L+ /home/sidney/.config/1Password            - sidney users - /persist/home/.config/1Password"
+    "L+ /home/sidney/.config/discord              - sidney users - /persist/home/.config/discord"
+    "L+ /home/sidney/.config/GIMP                 - sidney users - /persist/home/.config/GIMP"
+    "L+ /home/sidney/.config/keepassxc            - sidney users - /persist/home/.config/keepassxc"
+    "L+ /home/sidney/.config/keyd                 - sidney users - /persist/home/.config/keyd"
+    "L+ '/home/sidney/.config/Ledger Live'        - sidney users - /persist/home/.config/Ledger Live"
+    "L+ /home/sidney/.config/obs-studio           - sidney users - /persist/home/.config/obs-studio"
+    "L+ /home/sidney/.config/openttd              - sidney users - /persist/home/.config/openttd"
+    "L+ /home/sidney/.config/solaar               - sidney users - /persist/home/.config/solaar"
+    "L+ /home/sidney/.config/spotify              - sidney users - /persist/home/.config/spotify"
+    "L+ /home/sidney/.config/transmission         - sidney users - /persist/home/.config/transmission"
+    "d  /home/sidney/.local                    0755 sidney users"
+    "d  /home/sidney/.local/share              0755 sidney users"
+    "L+ /home/sidney/.local/share/applications    - sidney users - /persist/home/.local/share/applications"
+    "L+ /home/sidney/.local/share/bottles         - sidney users - /persist/home/.local/share/bottles"
+    "L+ /home/sidney/.local/share/cool-retro-term - sidney users - /persist/home/.local/share/cool-retro-term"
+    "L+ /home/sidney/.local/share/openttd         - sidney users - /persist/home/.local/share/openttd"
+    "L+ /home/sidney/.local/share/Steam           - sidney users - /persist/home/.local/share/Steam"
+    "L+ /home/sidney/.local/share/vulkan          - sidney users - /persist/home/.local/share/vulkan"
+    "d  /home/sidney/.local/state              0755 sidney users"
+    "L+ /home/sidney/.local/state/wireplumber     - sidney users - /persist/home/.local/state/wireplumber"
+    "L+ /home/sidney/.gitconfig                   - sidney users - /persist/home/.gitconfig"
+    "L+ /home/sidney/.steam                       - sidney users - /persist/home/.steam"
+    "L+ /home/sidney/.mozilla                     - sidney users - /persist/home/.mozilla"
+    "L+ /home/sidney/.pki                         - sidney users - /persist/home/.pki"
+    "L+ /home/sidney/.ssh                         - sidney users - /persist/home/.ssh"
+    "L+ /home/sidney/.surf                        - sidney users - /persist/home/.surf"
+    "L+ /home/sidney/.vim                         - sidney users - /persist/home/.vim"
+    "L+ /home/sidney/Desktop                      - sidney users - /persist/home/Desktop"
+    "L+ /home/sidney/Documents                    - sidney users - /persist/home/Documents"
+    "L+ /home/sidney/Downloads                    - sidney users - /persist/home/Downloads"
+    "L+ /home/sidney/Music                        - sidney users - /persist/home/Music"
+    "L+ /home/sidney/Pictures                     - sidney users - /persist/home/Pictures"
+    "L+ /home/sidney/Source                       - sidney users - /persist/home/Source"
+    "L+ /home/sidney/Videos                       - sidney users - /persist/home/Videos"
+    "L+ /home/sidney/.bash_history                - sidney users - /persist/home/.bash_history"
   ];
   environment = {
     persistence."/persist/system" = {
@@ -319,6 +320,9 @@ in
       obs-studio
       bibata-cursors
       bibata-cursors-translucent
+      cool-retro-term
+      cmatrix
+      asciiquarium-transparent
       bleeding.xivlauncher
       unstable-10-05-2023.ledger-live-desktop
       (unstable-08-19-2023.st.overrideAttrs (oldAttrs: rec {
@@ -506,11 +510,13 @@ in
         aq="asciiquarium";
         mail="neomutt";
         mb="mbsync -a";
+        crt="cool-retro-term";
         i3config="vim ~/.config/i3/config";
         swayconfig="vim ~/.config/sway/config";
         startsway="dbus-run-session sway >~/swaylog 2>&1";
         pkexec="pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY HOME=$HOME";
         t=''tmux new-session \; split-window -v \; select-pane -t 1 \; split-window -h \; select-pane -t 1 \; attach'';
+        tmux="tmux -2";
         rainfall="python3 /home/sidney/build/rainfall/source/rainfall.py";
         # LLM
         initllm="docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama";
