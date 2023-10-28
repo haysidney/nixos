@@ -112,7 +112,7 @@
       mako
       libnotify
       wl-clipboard
-      rofi
+      rofi-wayland
       i3status
       autotiling
     ];
