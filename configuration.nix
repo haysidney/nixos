@@ -25,6 +25,7 @@ in
 #      ./plasma.nix
 #      ./icewm.nix
 #      ./wayfire.nix
+#      ./hyprland.nix
       "${impermanence}/nixos.nix"
       "${home-manager}/nixos"
     ];
