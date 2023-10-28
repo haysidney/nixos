@@ -97,12 +97,6 @@
     etc = {
       "sway/config".source = ./extras/sway.conf;
       "i3status.conf".source = ./extras/i3status.conf;
-      "sway/elevated.sh" = {
-        mode = "0755";
-        text = ''
-          pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY HOME=$HOME solaar -w hide
-        '';
-      };
     };
     systemPackages = with pkgs; [
       polkit_gnome
