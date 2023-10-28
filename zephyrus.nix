@@ -75,6 +75,7 @@ in
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware = {
     bluetooth.enable = true;
+    opengl.enable = true;
     opengl.driSupport = true;
     # For 32 bit applications
     opengl.driSupport32Bit = true;
