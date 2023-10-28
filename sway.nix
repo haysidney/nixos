@@ -33,6 +33,9 @@
         base = true;
         gtk = true;
       };
+      extraSessionCommands = ''
+        ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 &
+      '';
     };
   };
 

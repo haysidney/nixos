@@ -549,7 +549,7 @@ in
         crt="cool-retro-term";
         i3config="vim ~/.config/i3/config";
         swayconfig="vim ~/.config/sway/config";
-        startsway="${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 & dbus-run-session sway >~/swaylog 2>&1";
+        startsway="dbus-run-session sway >~/swaylog 2>&1";
         pkexec="pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY HOME=$HOME";
         t=''tmux new-session \; split-window -v \; select-pane -t 1 \; split-window -h \; select-pane -t 1 \; attach'';
         tmux="tmux -2";
