@@ -28,6 +28,7 @@
     wayfire = {
       enable = true;
       plugins = with pkgs.wayfirePlugins; [
+        #wf-shell
         wcm
         wayfire-plugins-extra
       ];
