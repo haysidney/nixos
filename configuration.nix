@@ -363,6 +363,8 @@ in
        XL_SECRET_PROVIDER = "FILE"; # For XIVLauncher
        NIXOS_CONFIG = "/persist/home/.config/nixos/configuration.nix";
        WWW_HOME = "https://lite.duckduckgo.com/lite";
+       XKB_DEFAULT_LAYOUT = "us";
+       XKB_DEFAULT_VARIANT = "colemak";
     };
     interactiveShellInit = "bind -s 'set completion-ignore-case on'";
   };
