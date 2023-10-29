@@ -93,14 +93,12 @@
   environment = {
     sessionVariables = {
       XDG_CURRENT_DESKTOP = "sway";
-      XCURSOR_SIZE = "64";
       XDG_CURRENT_SESSION = "sway";
+      XCURSOR_SIZE = "48";
       XCURSOR_THEME = "Bibata-Modern-Ice";
       MOZ_ENABLE_WAYLAND = "1";
       NIXOS_OZONE_WL = "1";
       SDL_VIDEODRIVER = "wayland";
-      GDK_SCALE = "1.5";
-      QT_FONT_DPI = "120";
       QT_QPA_PLATFORM = "wayland-egl";
       QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
     };
