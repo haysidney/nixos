@@ -301,6 +301,7 @@ in
       bat
       tree
       xclip
+      copyq
       lynx
       surf
       parted
