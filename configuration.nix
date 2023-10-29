@@ -633,11 +633,8 @@ in
       enable = true;
       args = [
         "--rt"
-        "-W 2560"
-        "-H 1600"
         "-f"
         "-o 10"
-        "--cursor /persist/home/.config/nixos/extras/bibata-modern-ice-medium.png"
       ];
     };
   };
