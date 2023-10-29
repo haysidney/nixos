@@ -50,6 +50,7 @@
     systemPackages = with pkgs; [
       polkit_gnome
       xwaylandvideobridge
+      wlprop
       mako
       libnotify
       wl-clipboard
