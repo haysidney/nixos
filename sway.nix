@@ -34,7 +34,6 @@
       XCURSOR_THEME = "Bibata-Modern-Ice";
       MOZ_ENABLE_WAYLAND = "1";
       NIXOS_OZONE_WL = "1";
-      SDL_VIDEODRIVER = "wayland";
       QT_QPA_PLATFORM = "wayland-egl";
       QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
     };
