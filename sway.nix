@@ -94,6 +94,7 @@
     sessionVariables = {
       XDG_CURRENT_DESKTOP = "sway";
       XCURSOR_SIZE = "64";
+      XDG_CURRENT_SESSION = "sway";
       XCURSOR_THEME = "Bibata-Modern-Ice";
       MOZ_ENABLE_WAYLAND = "1";
       NIXOS_OZONE_WL = "1";
