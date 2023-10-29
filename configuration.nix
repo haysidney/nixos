@@ -586,9 +586,6 @@ in
         mail="neomutt";
         mb="mbsync -a";
         crt="cool-retro-term";
-        i3config="vim ~/.config/i3/config";
-        swayconfig="vim ~/.config/sway/config";
-        startsway="dbus-run-session sway >~/swaylog 2>&1";
         pkexec="pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY HOME=$HOME";
         t=''tmux new-session \; split-window -v \; select-pane -t 1 \; split-window -h \; select-pane -t 1 \; attach'';
         tmux="tmux -2";

@@ -109,6 +109,13 @@ in
       };
     };
   };
+  programs = {
+    bash.shellAliases = {
+      xrandrnative = "xrandr -s 2560x1600 && xrandr --dpi 96";
+      xrandr1200 = "xrandr -s 1920x1200 && xrandr --dpi 96";
+      xrandr1050 = "xrandr -s 1680x1050 && xrandr --dpi 96";
+    };
+  };
   services = {
     supergfxd.enable = true;
     asusd = {

@@ -37,6 +37,9 @@
         ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 &
       '';
     };
+    bash.shellAliases = {
+      startsway="dbus-run-session sway >~/swaylog 2>&1";
+    };
   };
 
   services.dbus.enable = true;
