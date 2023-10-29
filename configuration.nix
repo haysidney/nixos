@@ -52,6 +52,7 @@ in
     "L+ /home/sidney/.config/spotify              - sidney users - /persist/home/.config/spotify"
     "L+ /home/sidney/.config/transmission         - sidney users - /persist/home/.config/transmission"
     "L+ /home/sidney/.config/xsettingsd           - sidney users - /persist/home/.config/xsettingsd"
+    "L+ /home/sidney/.factorio                    - sidney users - /persist/home/.factorio"
     "L+ /home/sidney/.gtkrc-2.0                   - sidney users - /persist/home/.gtkrc-2.0"
     "L+ /home/sidney/.icons                       - sidney users - /persist/home/.icons"
     "d  /home/sidney/.local                    0755 sidney users"
