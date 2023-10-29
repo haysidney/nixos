@@ -586,7 +586,7 @@ in
         mail="neomutt";
         mb="mbsync -a";
         crt="cool-retro-term";
-        pkexec="pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY HOME=$HOME";
+        pkexecx="pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY HOME=$HOME";
         t=''tmux new-session \; split-window -v \; select-pane -t 1 \; split-window -h \; select-pane -t 1 \; attach'';
         tmux="tmux -2";
         rainfall="python3 /home/sidney/build/rainfall/source/rainfall.py";

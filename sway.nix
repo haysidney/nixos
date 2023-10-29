@@ -33,9 +33,6 @@
         base = true;
         gtk = true;
       };
-      extraSessionCommands = ''
-        ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 &
-      '';
     };
     bash.shellAliases = {
       startsway="dbus-run-session sway >~/swaylog 2>&1";
@@ -104,6 +101,12 @@
     };
     etc = {
       "sway/config".source = ./extras/sway.conf;
+      "sway/polkit.sh" = {
+        mode = "0755";
+        text = ''
+          ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
+        '';
+      };
       "i3status.conf".source = ./extras/i3status.conf;
     };
     systemPackages = with pkgs; [
