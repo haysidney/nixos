@@ -104,21 +104,9 @@ in
 
         [main]
         capslock = f13
-#        volumeup = command(/run/current-system/sw/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%)
-#        volumedown = command(/run/current-system/sw/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%)
-#        mute = command(/run/current-system/sw/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle)
-#        micmute = command(/run/current-system/sw/bin/pactl set-source-mute @DEFAULT_SOURCE@ toggle)
         brightnessup = command(/run/current-system/sw/bin/brightnessctl set +10%)
         brightnessdown = command(/run/current-system/sw/bin/brightnessctl set 10%-)
-#        play = command(/run/current-system/sw/bin/playerctl play-pause)
-#        pause = command(/run/current-system/sw/bin/playerctl play-pause)
-#        playpause = command(/run/current-system/sw/bin/playerctl play-pause)
-#        next = command(/run/current-system/sw/bin/playerctl next)
-#        nextsong = command(/run/current-system/sw/bin/playerctl next)
-#        prev = command(/run/current-system/sw/bin/playerctl previous)
-#        previoussong = command(/run/current-system/sw/bin/playerctl previous)
         # Asus Zephyrus Specific
-#        f21 = command(DISPLAY=:0 XAUTHORITY=/home/sidney/.Xauthority /etc/keyd/touchpadtoggle.sh)
         prog3 = command(/run/current-system/sw/bin/asusctl led-mode -n)
         kbdillumup = command(/run/current-system/sw/bin/asusctl -n)
         kbdillumdown = command(/run/current-system/sw/bin/asusctl -p)
@@ -156,12 +144,6 @@ in
         down = volumedown
         rightshift = playpause
       '';
-      "keyd/touchpadtoggle.sh" = {
-        mode = "0755";
-        text = ''
-          /run/current-system/sw/bin/xinput set-prop "ASUE120A:00 04F3:319B Touchpad" "Device Enabled" $((1-$(/run/current-system/sw/bin/xinput list-props "ASUE120A:00 04F3:319B Touchpad" | /run/current-system/sw/bin/grep "Device Enabled" | /run/current-system/sw/bin/grep -o "[01]$")))
-        '';
-      };
       "keyd/razernaga.conf".text = ''
         [ids]
         1532:00b4
