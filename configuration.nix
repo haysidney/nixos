@@ -552,6 +552,13 @@ in
   system.copySystemConfiguration = true;
   system.stateVersion = "23.05";
 
+  fonts = {
+    enableDefaultPackages = true;
+    packages = with pkgs; [
+      font-awesome
+    ];
+  };
+
   programs = {
     steam.enable = true;
     git.enable = true;

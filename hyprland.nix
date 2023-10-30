@@ -7,12 +7,28 @@
 
   security.polkit.enable = true;
 
-  fonts.enableDefaultPackages = true;
+  nixpkgs = {
+    overlays = [
+      (final: prev: {
+        waybar = prev.waybar.overrideAttrs (old: {
+          src = prev.fetchFromGitHub {
+            owner = "Alexays";
+            repo = "Waybar";
+            rev = "05a2af2d7c57ce320053b73ed86a58449b5332f1";
+            sha256 = "KeNmibp1WKS813xx/EJiY2uoBw+tBTnTK/mtm0EQBHQ=";
+          };
+        });
+      })
+    ];
+  };
 
   programs = {
     dconf.enable = true;
     hyprland.enable = true;
     waybar.enable = true;
+    bash.shellAliases = {
+      starth="dbus-run-session Hyprland >~/hyprlog 2>&1";
+    };
   };
 
   services.dbus.enable = true;
@@ -41,26 +57,30 @@
   environment = {
     etc = {
       "xdg/waybar/config".source = ./extras/waybar.conf;
-      "i3/elevated.sh" = {
+      "xdg/waybar/style.css".source = ./extras/waybar.css;
+      "hypr/polkit.sh" = {
         mode = "0755";
         text = ''
-          pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY HOME=$HOME solaar -w hide
+          ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
         '';
       };
     };
     sessionVariables = {
-      XCURSOR_SIZE = "64";
+      XCURSOR_SIZE = "48";
       XCURSOR_THEME = "Bibata-Modern-Ice";
       MOZ_ENABLE_WAYLAND = "1";
       NIXOS_OZONE_WL = "1";
+      QT_QPA_PLATFORM = "wayland-egl";
+      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
     };
     systemPackages = with pkgs; [
       polkit_gnome
       xwaylandvideobridge
       mako
       libnotify
+      wlprop
       wl-clipboard
-      rofi
+      rofi-wayland
       swww
       slurp
     ];
