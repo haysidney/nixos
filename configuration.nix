@@ -72,6 +72,7 @@ in
     "L+ /home/sidney/.pki                         - sidney users - /persist/home/.pki"
     "L+ /home/sidney/.ssh                         - sidney users - /persist/home/.ssh"
     "L+ /home/sidney/.surf                        - sidney users - /persist/home/.surf"
+    "L+ /home/sidney/.var                         - sidney users - /persist/home/.var"
     "L+ /home/sidney/.vim                         - sidney users - /persist/home/.vim"
     "L+ /home/sidney/Desktop                      - sidney users - /persist/home/Desktop"
     "L+ /home/sidney/Documents                    - sidney users - /persist/home/Documents"
@@ -314,7 +315,6 @@ in
       w3m
       p7zip
       rar
-      discord
       distrobox
       bottles
       python312
