@@ -76,8 +76,6 @@
     systemPackages = with pkgs; [
       polkit_gnome
       xwaylandvideobridge
-      mako
-      libnotify
       wlprop
       wl-clipboard
       rofi-wayland
