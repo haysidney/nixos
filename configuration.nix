@@ -44,7 +44,6 @@ in
     "L+ /home/sidney/.config/discord              - sidney users - /persist/home/.config/discord"
     "L+ /home/sidney/.config/GIMP                 - sidney users - /persist/home/.config/GIMP"
     "L+ /home/sidney/.config/keepassxc            - sidney users - /persist/home/.config/keepassxc"
-    "L+ /home/sidney/.config/keyd                 - sidney users - /persist/home/.config/keyd"
     "L+ '/home/sidney/.config/Ledger Live'        - sidney users - /persist/home/.config/Ledger Live"
     "L+ /home/sidney/.config/obs-studio           - sidney users - /persist/home/.config/obs-studio"
     "L+ /home/sidney/.config/openttd              - sidney users - /persist/home/.config/openttd"
@@ -123,13 +122,6 @@ in
         prog3 = command(/run/current-system/sw/bin/asusctl led-mode -n)
         kbdillumup = command(/run/current-system/sw/bin/asusctl -n)
         kbdillumdown = command(/run/current-system/sw/bin/asusctl -p)
-        # Explicitly define these so that FFXIV doesn't
-        # prevent me from switching workspaces
-        [meta]
-        1 = M-1
-        2 = M-2
-        3 = M-3
-        4 = M-4
 
         [altgr]
         # Don't get in the way of r_alt enter
@@ -170,6 +162,17 @@ in
           /run/current-system/sw/bin/xinput set-prop "ASUE120A:00 04F3:319B Touchpad" "Device Enabled" $((1-$(/run/current-system/sw/bin/xinput list-props "ASUE120A:00 04F3:319B Touchpad" | /run/current-system/sw/bin/grep "Device Enabled" | /run/current-system/sw/bin/grep -o "[01]$")))
         '';
       };
+      "keyd/razernaga.conf".text = ''
+        [ids]
+        1532:00b4
+        068e:00b5
+
+        [main]
+        1 = f5
+        2 = f6
+        3 = f7
+        4 = f8
+      '';
       "wireplumber/bluetooth.lua.d/51-bluez-config.lua".text = ''
         bluez_monitor.properties = {
           ["bluez5.enable-sbc-xq"] = true,
