@@ -316,6 +316,8 @@ in
       bibata-cursors-translucent
       cool-retro-term
       cmatrix
+      imagemagick
+      ffmpeg
       asciiquarium-transparent
       bleeding.xivlauncher
       unstable-10-05-2023.ledger-live-desktop
