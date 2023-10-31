@@ -4,9 +4,10 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
+    impermanence.url = "github:nix-community/impermanence";
   };
 
-  outputs = { self, nixpkgs, ... }:
+  outputs = { self, nixpkgs, impermanence, ... }:
     let
       lib = nixpkgs.lib;
     in {
@@ -14,7 +15,7 @@
       zephyrus = lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          #./zephyrus.nix
+          ./zephyrus.nix
           ./configuration.nix
           #./i3.nix
           #./sway.nix
@@ -22,7 +23,8 @@
           #./plasma.nix
           #./icewm.nix
           #./wayfire.nix
-          #./hyprland.nix
+          ./hyprland.nix
+          impermanence.nixosModules.impermanence
         ];
       };
     };

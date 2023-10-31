@@ -1,26 +1,5 @@
 { config, pkgs, ... }:
-# https://nixos.wiki/wiki/Impermanence
-# https://lazamar.co.uk/nix-versions/
-let
-  impermanence = builtins.fetchTarball  {
-    url = "https://github.com/nix-community/impermanence/archive/master.tar.gz";
-    sha256 = "120775fbfar2x1s5ijkxnvb8p0mmk3dlbq0lzfhsi0csfynp98ki";
-  };
-in
 {
-  imports =
-    [
-      ./zephyrus.nix
-      ./i3.nix
-#      ./sway.nix
-#      ./dwm.nix
-#      ./plasma.nix
-#      ./icewm.nix
-#      ./wayfire.nix
-#      ./hyprland.nix
-      "${impermanence}/nixos.nix"
-    ];
-
   systemd.tmpfiles.rules = [
     "d  /mnt                                   0755 root root"
     "d  /home/sidney/.cache                    0755 sidney users"
