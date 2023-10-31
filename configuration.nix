@@ -2,18 +2,10 @@
 # https://nixos.wiki/wiki/Impermanence
 # https://lazamar.co.uk/nix-versions/
 let
-  impermanence = builtins.fetchTarball "https://github.com/nix-community/impermanence/archive/master.tar.gz";
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-23.05.tar.gz";
-  unstable-08-19-2023 = import (builtins.fetchTarball {
-    url = "https://github.com/NixOS/nixpkgs/archive/976fa3369d722e76f37c77493d99829540d43845.tar.gz";
-  }) {};
-  unstable-10-05-2023 = import (builtins.fetchTarball {
-    url = "https://github.com/NixOS/nixpkgs/archive/893851c2c859d32b3a24177981105e0366bf9151.tar.gz";
-  }) {};
-  unstable = unstable-08-19-2023;
-  bleeding = import (builtins.fetchTarball {
-    url = "https://github.com/NixOS/nixpkgs/archive/master.tar.gz";
-  }) {};
+  impermanence = builtins.fetchTarball  {
+    url = "https://github.com/nix-community/impermanence/archive/master.tar.gz";
+    sha256 = "120775fbfar2x1s5ijkxnvb8p0mmk3dlbq0lzfhsi0csfynp98ki";
+  };
 in
 {
   imports =
@@ -27,7 +19,6 @@ in
 #      ./wayfire.nix
 #      ./hyprland.nix
       "${impermanence}/nixos.nix"
-      "${home-manager}/nixos"
     ];
 
   systemd.tmpfiles.rules = [
@@ -319,9 +310,9 @@ in
       imagemagick
       ffmpeg
       asciiquarium-transparent
-      bleeding.xivlauncher
-      unstable-10-05-2023.ledger-live-desktop
-      (unstable-08-19-2023.st.overrideAttrs (oldAttrs: rec {
+      xivlauncher
+      ledger-live-desktop
+      (st.overrideAttrs (oldAttrs: rec {
         patches = [
           ./extras/st-font-size.diff
           ./extras/st-delkey.diff
@@ -532,11 +523,10 @@ in
       wantedBy = [ "default.target" ];
     };
   };
-  nix.extraOptions = "experimental-features = nix-command flakes";
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   virtualisation.docker.enable = true;
 
-  system.copySystemConfiguration = true;
   system.stateVersion = "23.05";
 
   fonts = {
