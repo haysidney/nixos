@@ -399,7 +399,7 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking = {
-    hostName = "nixos";
+    hostName = "zephyrus";
     networkmanager.enable = true;
   };
 
