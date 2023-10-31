@@ -302,10 +302,6 @@
             sha256 = "01/KBNbBKcFcfbcpMnev/LCzHpON3selAYNo8NUPbF4=";
           })
           (fetchpatch {
-            url = "https://st.suckless.org/patches/w3m/st-w3m-0.8.3.diff";
-            sha256 = "nVSG8zuRt3oKQCndzm+3ykuRB1NMYyas0Ne3qCG59ok=";
-          })
-          (fetchpatch {
             url = "https://st.suckless.org/patches/anysize/st-anysize-20220718-baa9357.diff";
             sha256 = "yx9VSwmPACx3EN3CAdQkxeoJKJxQ6ziC9tpBcoWuWHc=";
           })
