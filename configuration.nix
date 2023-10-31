@@ -374,6 +374,7 @@
               sha256 = "qnYHrXuYK5+dRdKgiQM4TzpGqJOSfl5oaucPD0oAnoc=";
             })
             ./extras/pywal-swww.diff
+            ./extras/pywal-hyprland.diff
           ];
           postPatch = ''
             substituteInPlace pywal/backends/wal.py --subst-var-by convert "${pkgs.imagemagick}/bin/convert"
@@ -575,7 +576,7 @@
         df="df -h";
         vi="vim";
         dd="dd status=progress";
-        wall="wal -a 80 -b 000000 -i";
+        wall="wal -a 80 -i";
         j="autojump";
         aq="asciiquarium";
         mail="neomutt";
