@@ -4,6 +4,7 @@
     "d  /mnt                                   0755 root root"
     "d  /home/sidney/.cache                    0755 sidney users"
     "L+ /home/sidney/.cache/spotify               - sidney users - /persist/home/.cache/spotify"
+    "L+ /home/sidney/.cache/wal                   - sidney users - /persist/home/.cache/wal"
     "L+ /home/sidney/.cert                        - sidney users - /persist/home/.cert"
     "d  /home/sidney/.config                   0755 sidney users"
     "L+ /home/sidney/.config/nixos                - sidney users - /persist/home/.config/nixos"
@@ -252,6 +253,7 @@
       htop
       btop
       tldr
+      pywal
       trash-cli
       rmtrash
       xfce.mousepad
@@ -357,6 +359,25 @@
           ];
           postInstall = ''
             mkdir -p $out/share/gamescope/reshade
+          '';
+        });
+        pywal = prev.pywal.overrideAttrs (old: {
+          src = prev.fetchFromGitHub {
+            owner = "dylanaraps";
+            repo = "pywal";
+            rev = "3.3.0";
+            sha256 = "zkcWXY0OkqQX5rp42lZR5tMJcm5MWd8apzAdAlk7NQ0=";
+          };
+          patches = [
+            (prev.fetchpatch {
+              url = "https://raw.githubusercontent.com/NixOS/nixpkgs/nixos-unstable/pkgs/development/python-modules/pywal/convert.patch";
+              sha256 = "qnYHrXuYK5+dRdKgiQM4TzpGqJOSfl5oaucPD0oAnoc=";
+            })
+            ./extras/pywal-swww.diff
+          ];
+          postPatch = ''
+            substituteInPlace pywal/backends/wal.py --subst-var-by convert "${pkgs.imagemagick}/bin/convert"
+            substituteInPlace pywal/wallpaper.py --subst-var-by swww "${pkgs.swww}/bin/swww"
           '';
         });
       })
@@ -532,6 +553,18 @@
             PS1="\[\033]2;\h:\u:\w\007\]$PS1"
           fi
         fi
+
+        # Import colorscheme from 'wal' asynchronously
+        # &   # Run the process in the background.
+        # ( ) # Hide shell job control messages.
+        # Not supported in the "fish" shell.
+        (cat ~/.cache/wal/sequences &)
+
+        # Alternative (blocks terminal for 0-3ms)
+        cat ~/.cache/wal/sequences
+
+        # To add support for TTYs this line can be optionally added.
+        source ~/.cache/wal/colors-tty.sh
       '';
       shellAliases = {
         c="clear";
@@ -542,6 +575,7 @@
         df="df -h";
         vi="vim";
         dd="dd status=progress";
+        wall="wal -a 80 -b 000000 -i";
         j="autojump";
         aq="asciiquarium";
         mail="neomutt";
