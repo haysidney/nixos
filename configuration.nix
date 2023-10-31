@@ -14,6 +14,8 @@
     "L+ /home/sidney/.config/discord              - sidney users - /persist/home/.config/discord"
     "L+ /home/sidney/.config/GIMP                 - sidney users - /persist/home/.config/GIMP"
     "L+ /home/sidney/.config/keepassxc            - sidney users - /persist/home/.config/keepassxc"
+    "d  /home/sidney/.config/kitty             0755 sidney users"
+    "L+ /home/sidney/.config/kitty/kitty.conf     - sidney users - /persist/home/.config/nixos/extras/kitty.conf"
     "L+ '/home/sidney/.config/Ledger Live'        - sidney users - /persist/home/.config/Ledger Live"
     "L+ /home/sidney/.config/obs-studio           - sidney users - /persist/home/.config/obs-studio"
     "L+ /home/sidney/.config/openttd              - sidney users - /persist/home/.config/openttd"
@@ -247,6 +249,7 @@
           let g:airline_symbols_ascii = 1
         '';
       })
+      kitty
       keyd
       htop
       btop
