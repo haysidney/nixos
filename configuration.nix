@@ -268,6 +268,7 @@
       killall
       pulseaudio
       ranger
+      ueberzugpp
       w3m
       p7zip
       rar
