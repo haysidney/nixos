@@ -86,6 +86,7 @@
       slurp
       swappy
       grimblast
+      imv
     ];
   };
 }
