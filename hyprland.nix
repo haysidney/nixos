@@ -81,6 +81,7 @@
       rofi-wayland
       swww
       slurp
+      grimblast
     ];
   };
 }
