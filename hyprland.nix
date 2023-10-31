@@ -114,7 +114,7 @@
     systemPackages = with pkgs; [
       polkit_gnome
       xwaylandvideobridge
-      wlprop
+      wev
       wl-clipboard
       rofi-wayland
       swww
