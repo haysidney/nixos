@@ -82,7 +82,9 @@
       wl-clipboard
       rofi-wayland
       swww
+      grim
       slurp
+      swappy
       grimblast
     ];
   };
