@@ -1,8 +1,10 @@
 { config, lib, pkgs, ... }:
 {
   systemd.tmpfiles.rules = [
-    "L+ /home/sidney/.cache/rofi3.druncache - sidney users - /persist/home/.cache/rofi3.druncache"
-    "L+ /home/sidney/.config/hypr           - sidney users - /persist/home/.config/hypr"
+    "L+ /home/sidney/.cache/rofi3.druncache     - sidney users - /persist/home/.cache/rofi3.druncache"
+    "d  /home/sidney/.config                 0755 sidney users"
+    "d  /home/sidney/.config/hypr            0755 sidney users"
+    "L+ /home/sidney/.config/hypr/hyprland.conf - sidney users - /persist/home/.config/nixos/extras/hyprland.conf"
   ];
 
   security.polkit.enable = true;
