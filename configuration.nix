@@ -574,6 +574,7 @@
         ll="ls -la";
         grep="grep --color=auto";
         df="df -h";
+        nf="clear && neofetch";
         vi="vim";
         dd="dd status=progress";
         wall="wal -a 80 -i";
