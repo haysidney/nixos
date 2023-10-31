@@ -295,6 +295,28 @@
       asciiquarium-transparent
       xivlauncher
       ledger-live-desktop
+      (st.overrideAttrs (oldAttrs: rec {
+        patches = [
+          ./extras/st-font-size.diff
+          ./extras/st-delkey.diff
+          (fetchpatch {
+            url = "https://st.suckless.org/patches/alpha/st-alpha-20220206-0.8.5.diff";
+            sha256 = "01/KBNbBKcFcfbcpMnev/LCzHpON3selAYNo8NUPbF4=";
+          })
+          (fetchpatch {
+            url = "https://st.suckless.org/patches/w3m/st-w3m-0.8.3.diff";
+            sha256 = "nVSG8zuRt3oKQCndzm+3ykuRB1NMYyas0Ne3qCG59ok=";
+          })
+          (fetchpatch {
+            url = "https://st.suckless.org/patches/anysize/st-anysize-20220718-baa9357.diff";
+            sha256 = "yx9VSwmPACx3EN3CAdQkxeoJKJxQ6ziC9tpBcoWuWHc=";
+          })
+          (fetchpatch {
+            url = "https://st.suckless.org/patches/dynamic-cursor-color/st-dynamic-cursor-color-0.9.diff";
+            sha256 = "JugrLvbnacZ6SfVl+V6tLM30LEKWBnRi6WM9oJR9OAA=";
+          })
+        ];
+      }))
     ];
     sessionVariables = {
        EDITOR = "vim";
