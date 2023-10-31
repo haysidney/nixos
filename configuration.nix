@@ -19,6 +19,7 @@
     "L+ '/home/sidney/.config/Ledger Live'        - sidney users - /persist/home/.config/Ledger Live"
     "L+ /home/sidney/.config/obs-studio           - sidney users - /persist/home/.config/obs-studio"
     "L+ /home/sidney/.config/openttd              - sidney users - /persist/home/.config/openttd"
+    "L+ /home/sidney/.config/ranger               - sidney users - /persist/home/.config/ranger"
     "L+ /home/sidney/.config/solaar               - sidney users - /persist/home/.config/solaar"
     "L+ /home/sidney/.config/spotify              - sidney users - /persist/home/.config/spotify"
     "L+ /home/sidney/.config/transmission         - sidney users - /persist/home/.config/transmission"
