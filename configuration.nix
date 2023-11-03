@@ -541,6 +541,8 @@
     fontDir.enable = true;
     packages = with pkgs; [
       font-awesome
+      noto-fonts
+      noto-fonts-emoji
     ];
   };
 
