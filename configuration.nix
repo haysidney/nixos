@@ -28,6 +28,7 @@
     "L+ /home/sidney/.gtkrc-2.0                   - sidney users - /persist/home/.gtkrc-2.0"
     "L+ /home/sidney/.icons                       - sidney users - /persist/home/.icons"
     "d  /home/sidney/.local                    0755 sidney users"
+    "L+ /home/sidney/.local/bin                   - sidney users - /persist/home/.local/bin"
     "d  /home/sidney/.local/share              0755 sidney users"
     "L+ /home/sidney/.local/share/applications    - sidney users - /persist/home/.local/share/applications"
     "L+ /home/sidney/.local/share/bottles         - sidney users - /persist/home/.local/share/bottles"
@@ -57,6 +58,7 @@
     "L+ /home/sidney/.bash_history                - sidney users - /persist/home/.bash_history"
   ];
   environment = {
+    localBinInPath = true;
     persistence."/persist/system" = {
       directories = [
         "/etc/nixos"
