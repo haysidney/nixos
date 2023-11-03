@@ -8,6 +8,7 @@
     "L+ /home/sidney/.cert                        - sidney users - /persist/home/.cert"
     "d  /home/sidney/.config                   0755 sidney users"
     "L+ /home/sidney/.config/nixos                - sidney users - /persist/home/.config/nixos"
+    "L+ /home/sidney/.config/audacity             - sidney users - /persist/home/.config/audacity"
     "L+ /home/sidney/.config/htop                 - sidney users - /persist/home/.config/htop"
     "L+ /home/sidney/.config/btop                 - sidney users - /persist/home/.config/btop"
     "L+ /home/sidney/.config/Cider                - sidney users - /persist/home/.config/Cider"
@@ -31,6 +32,7 @@
     "L+ /home/sidney/.local/bin                   - sidney users - /persist/home/.local/bin"
     "d  /home/sidney/.local/share              0755 sidney users"
     "L+ /home/sidney/.local/share/applications    - sidney users - /persist/home/.local/share/applications"
+    "L+ /home/sidney/.local/share/audacity        - sidney users - /persist/home/.local/share/audacity"
     "L+ /home/sidney/.local/share/bottles         - sidney users - /persist/home/.local/share/bottles"
     "L+ /home/sidney/.local/share/cool-retro-term - sidney users - /persist/home/.local/share/cool-retro-term"
     "L+ /home/sidney/.local/share/flatpak         - sidney users - /persist/home/.local/share/flatpak"
@@ -296,6 +298,7 @@
       cmatrix
       imagemagick
       ffmpeg
+      audacity
       asciiquarium-transparent
       xivlauncher
       ledger-live-desktop
