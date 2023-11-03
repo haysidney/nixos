@@ -6,6 +6,7 @@
     "L+ /home/sidney/.cache/keepassxc             - sidney users - /persist/home/.cache/keepassxc"
     "L+ /home/sidney/.cache/spotify               - sidney users - /persist/home/.cache/spotify"
     "L+ /home/sidney/.cache/wal                   - sidney users - /persist/home/.cache/wal"
+    "L+ /home/sidney/.cache/ytfzf                 - sidney users - /persist/home/.cache/ytfzf"
     "L+ /home/sidney/.cert                        - sidney users - /persist/home/.cert"
     "d  /home/sidney/.config                   0755 sidney users"
     "L+ /home/sidney/.config/nixos                - sidney users - /persist/home/.config/nixos"
@@ -300,6 +301,7 @@
       imagemagick
       ffmpeg
       audacity
+      ytfzf
       asciiquarium-transparent
       xivlauncher
       ledger-live-desktop
