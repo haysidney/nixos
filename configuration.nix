@@ -11,6 +11,7 @@
     "d  /home/sidney/.config                   0755 sidney users"
     "L+ /home/sidney/.config/nixos                - sidney users - /persist/home/.config/nixos"
     "L+ /home/sidney/.config/audacity             - sidney users - /persist/home/.config/audacity"
+    "L+ /home/sidney/.config/antimicrox           - sidney users - /persist/home/.config/antimicrox"
     "L+ /home/sidney/.config/htop                 - sidney users - /persist/home/.config/htop"
     "L+ /home/sidney/.config/btop                 - sidney users - /persist/home/.config/btop"
     "L+ /home/sidney/.config/Cider                - sidney users - /persist/home/.config/Cider"
@@ -303,6 +304,7 @@
       audacity
       ytfzf
       asciiquarium-transparent
+      antimicrox
       xivlauncher
       ledger-live-desktop
       (st.overrideAttrs (oldAttrs: rec {
