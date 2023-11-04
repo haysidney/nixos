@@ -398,6 +398,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  hardware.xone.enable = true;
+
   networking = {
     hostName = "zephyrus";
     networkmanager.enable = true;
