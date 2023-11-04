@@ -7,6 +7,10 @@ in
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
+  systemd.tmpfiles.rules = [
+    "L+ /home/sidney/.cache/mesa_shader_cache - sidney users - /persist/home/.cache/mesa_shader_cache"
+  ];
+
   boot.kernelPackages = pkgs.linuxPackages_6_5;
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "usbhid" "usb_storage" "sd_mod" "sdhci_pci" ];
   boot.initrd.kernelModules = [ ];
