@@ -615,6 +615,7 @@
         nf="clear && neofetch";
         vi="vim";
         dd="dd status=progress";
+        ranger=''ranger --cmd="eval import PIL"'';
         wall="wal -a 80 -i";
         j="autojump";
         aq="asciiquarium";
