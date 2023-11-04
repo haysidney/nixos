@@ -2,6 +2,7 @@
 {
   systemd.tmpfiles.rules = [
     "L+ /home/sidney/.cache/rofi3.druncache     - sidney users - /persist/home/.cache/rofi3.druncache"
+    "L+ /home/sidney/.cache/rofi-3.runcache     - sidney users - /persist/home/.cache/rofi-3.runcache"
     "d  /home/sidney/.config                 0755 sidney users"
     "d  /home/sidney/.config/hypr            0755 sidney users"
     "L+ /home/sidney/.config/hypr/hyprland.conf - sidney users - /persist/home/.config/nixos/extras/hyprland.conf"
