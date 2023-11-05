@@ -10,7 +10,6 @@
 
   security.polkit.enable = true;
 
-
   programs = {
     dconf.enable = true;
     hyprland.enable = true;
@@ -25,18 +24,7 @@
   xdg.portal = {
     enable = true;
     wlr.enable = true;
-#    wlr.settings = {
-#      screencast = {
-#        output_name = "eDP-2";
-#        max_fps = 30;
-##        exec_before = "disable_notifications.sh";
-##        exec_after = "enable_notifications.sh";
-#        chooser_type = "simple";
-#        chooser_cmd = "${pkgs.slurp}/bin/slurp -f %o -or";
-#      };
-#    };
     xdgOpenUsePortal = true;
-    # gtk portal needed to make gtk apps happy
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
       pkgs.xdg-desktop-portal-hyprland
