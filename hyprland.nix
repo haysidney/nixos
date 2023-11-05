@@ -10,20 +10,6 @@
 
   security.polkit.enable = true;
 
-  nixpkgs = {
-    overlays = [
-      (final: prev: {
-        waybar = prev.waybar.overrideAttrs (old: {
-          src = prev.fetchFromGitHub {
-            owner = "Alexays";
-            repo = "Waybar";
-            rev = "05a2af2d7c57ce320053b73ed86a58449b5332f1";
-            sha256 = "KeNmibp1WKS813xx/EJiY2uoBw+tBTnTK/mtm0EQBHQ=";
-          };
-        });
-      })
-    ];
-  };
 
   programs = {
     dconf.enable = true;

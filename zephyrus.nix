@@ -11,11 +11,11 @@ in
     "L+ /home/sidney/.cache/mesa_shader_cache - sidney users - /persist/home/.cache/mesa_shader_cache"
   ];
 
-  boot.kernelPackages = pkgs.linuxPackages_6_5;
+  boot.kernelPackages = pkgs.linuxPackages_6_6;
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "usbhid" "usb_storage" "sd_mod" "sdhci_pci" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" "amdgpu" "msr" "v4l2loopback" ];
-  boot.extraModulePackages = [ pkgs.linuxKernel.packages.linux_6_5.v4l2loopback ];
+  boot.extraModulePackages = [ pkgs.linuxKernel.packages.linux_6_6.v4l2loopback ];
   boot.kernelParams = [
     "amd_pstate=active"
   ];
@@ -90,7 +90,7 @@ in
     sessionVariables = { AMD_VULKAN_ICD = "RADV"; };
     systemPackages = with pkgs; [
       brightnessctl
-      linuxKernel.packages.linux_6_5.cpupower
+      linuxKernel.packages.linux_6_6.cpupower
       solaar
     ];
     etc = {
@@ -98,7 +98,7 @@ in
         mode = "0744";
         text = ''
           /run/current-system/sw/bin/asusctl profile -P Balanced
-          ${pkgs.linuxKernel.packages.linux_6_5.cpupower}/bin/cpupower frequency-set -g powersave
+          ${pkgs.linuxKernel.packages.linux_6_6.cpupower}/bin/cpupower frequency-set -g powersave
           # When the scaling governor is set to performance we can't edit the epp hint
           /run/current-system/sw/bin/bash -c "echo "power" | /run/current-system/sw/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference"
         '';
@@ -107,7 +107,7 @@ in
         mode = "0744";
         text = ''
           /run/current-system/sw/bin/asusctl profile -P Quiet
-          ${pkgs.linuxKernel.packages.linux_6_5.cpupower}/bin/cpupower frequency-set -g powersave
+          ${pkgs.linuxKernel.packages.linux_6_6.cpupower}/bin/cpupower frequency-set -g powersave
           /run/current-system/sw/bin/bash -c "echo "power" | /run/current-system/sw/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference"
         '';
       };
