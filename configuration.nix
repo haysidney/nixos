@@ -273,6 +273,7 @@
       lynx
       surf
       parted
+      qdirstat
       pavucontrol
       flameshot
       neofetch
