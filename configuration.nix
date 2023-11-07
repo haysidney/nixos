@@ -21,6 +21,7 @@
     "L+ /home/sidney/.config/GIMP                 - sidney users - /persist/home/.config/GIMP"
     "L+ /home/sidney/.config/keepassxc            - sidney users - /persist/home/.config/keepassxc"
     "L+ '/home/sidney/.config/Ledger Live'        - sidney users - /persist/home/.config/Ledger Live"
+    "L+ /home/sidney/.config/mutt                 - sidney users - /persist/home/.config/mutt"
     "L+ /home/sidney/.config/obs-studio           - sidney users - /persist/home/.config/obs-studio"
     "L+ /home/sidney/.config/openttd              - sidney users - /persist/home/.config/openttd"
     "L+ /home/sidney/.config/ranger               - sidney users - /persist/home/.config/ranger"
@@ -41,11 +42,13 @@
     "L+ /home/sidney/.local/share/cool-retro-term - sidney users - /persist/home/.local/share/cool-retro-term"
     "L+ /home/sidney/.local/share/flatpak         - sidney users - /persist/home/.local/share/flatpak"
     "L+ /home/sidney/.local/share/fonts           - sidney users - /run/current-system/sw/share/X11/fonts"
+    "L+ /home/sidney/.local/share/mail            - sidney users - /run/current-system/sw/share/X11/mail"
     "L+ /home/sidney/.local/share/openttd         - sidney users - /persist/home/.local/share/openttd"
     "L+ /home/sidney/.local/share/Steam           - sidney users - /persist/home/.local/share/Steam"
     "L+ /home/sidney/.local/share/vulkan          - sidney users - /persist/home/.local/share/vulkan"
     "d  /home/sidney/.local/state              0755 sidney users"
     "L+ /home/sidney/.local/state/wireplumber     - sidney users - /persist/home/.local/state/wireplumber"
+    "L+ /home/sidney/.password-store              - sidney users - /persist/home/.password-store"
     "L+ /home/sidney/.gitconfig                   - sidney users - /persist/home/.gitconfig"
     "L+ /home/sidney/.steam                       - sidney users - /persist/home/.steam"
     "L+ /home/sidney/.mozilla                     - sidney users - /persist/home/.mozilla"
@@ -305,6 +308,10 @@
       ffmpeg
       audacity
       ytfzf
+      mutt-wizard
+      neomutt
+      isync
+      pass
       asciiquarium-transparent
       antimicrox
       xivlauncher
