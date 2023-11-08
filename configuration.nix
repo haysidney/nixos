@@ -2,6 +2,7 @@
 {
   systemd.tmpfiles.rules = [
     "d  /mnt                                   0755 root root"
+    "d  /var/lib/syncthing                     0700 sidney users"
     "d  /home/sidney/.cache                    0755 sidney users"
     "L+ /home/sidney/.cache/keepassxc             - sidney users - /persist/home/.cache/keepassxc"
     "L+ /home/sidney/.cache/spotify               - sidney users - /persist/home/.cache/spotify"
@@ -533,6 +534,12 @@
         LABEL="solaar_end"
         # vim: ft=udevrules
       '';
+    };
+    syncthing = {
+      enable = true;
+      user = "sidney";
+      group = "users";
+      dataDir = "/var/lib/syncthing";
     };
     switcherooControl.enable = true;
     udisks2.enable = true;
