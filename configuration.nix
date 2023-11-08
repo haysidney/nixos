@@ -313,6 +313,9 @@
       neomutt
       isync
       pass
+      yubikey-personalization
+      yubikey-personalization-gui
+      yubikey-manager-qt
       asciiquarium-transparent
       antimicrox
       xivlauncher
@@ -533,7 +536,7 @@
     };
     switcherooControl.enable = true;
     udisks2.enable = true;
-    pcscd.enable = true;
+    yubikey-agent.enable = true;
   };
   systemd.services = {
     keyd = {
