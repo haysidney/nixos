@@ -543,7 +543,6 @@
     };
     switcherooControl.enable = true;
     udisks2.enable = true;
-    yubikey-agent.enable = true;
   };
   systemd.services = {
     keyd = {
