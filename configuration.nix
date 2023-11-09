@@ -320,7 +320,9 @@
       paperkey
       yubikey-personalization
       yubikey-personalization-gui
+      yubikey-manager
       yubikey-manager-qt
+      yubioath-flutter
       asciiquarium-transparent
       antimicrox
       xivlauncher
@@ -551,6 +553,8 @@
     };
     switcherooControl.enable = true;
     udisks2.enable = true;
+    pcscd.enable = true;
+    #yubikey-agent.enable = true;
   };
   systemd.services = {
     keyd = {
@@ -666,6 +670,8 @@
         t=''tmux new-session \; split-window -v \; select-pane -t 1 \; split-window -h \; select-pane -t 1 \; attach'';
         tmux="tmux -2";
         synckey=''gpg-connect-agent "scd serialno" "learn --force" /bye'';
+        otps="ykman oath accounts code";
+        ffotp=''ykman oath accounts code | grep "FFXIV" | awk '{print $NF}' '';
         rainfall="python3 /home/sidney/build/rainfall/source/rainfall.py";
         # LLM
         llminit="docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama";
