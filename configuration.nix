@@ -316,6 +316,8 @@
       neomutt
       isync
       pass
+      cryptsetup
+      paperkey
       yubikey-personalization
       yubikey-personalization-gui
       yubikey-manager-qt
@@ -663,6 +665,7 @@
         pkexecx="pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY HOME=$HOME";
         t=''tmux new-session \; split-window -v \; select-pane -t 1 \; split-window -h \; select-pane -t 1 \; attach'';
         tmux="tmux -2";
+        synckey=''gpg-connect-agent "scd serialno" "learn --force" /bye'';
         rainfall="python3 /home/sidney/build/rainfall/source/rainfall.py";
         # LLM
         llminit="docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama";
