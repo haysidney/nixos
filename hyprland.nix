@@ -92,6 +92,7 @@
       wev
       wl-clipboard
       rofi-wayland
+      rofimoji
       swww
       grim
       slurp
