@@ -30,6 +30,8 @@
     "L+ /home/sidney/.config/spotify              - sidney users - /persist/home/.config/spotify"
     "L+ /home/sidney/.config/transmission         - sidney users - /persist/home/.config/transmission"
     "L+ /home/sidney/.config/xsettingsd           - sidney users - /persist/home/.config/xsettingsd"
+    "d  /home/sidney/.config/Yubico            0755 sidney users"
+    "L+ /home/sidney/.config/Yubico/u2f_keys      - sidney users - /persist/home/.config/Yubico/u2f_keys"
     "L+ /home/sidney/.factorio                    - sidney users - /persist/home/.factorio"
     "L+ /home/sidney/.gnupg                       - sidney users - /persist/home/.gnupg"
     "L+ /home/sidney/.gtkrc-2.0                   - sidney users - /persist/home/.gtkrc-2.0"
@@ -451,6 +453,10 @@
     sudo.extraConfig = "Defaults lecture = never";
     # For sound
     rtkit.enable = true;
+    pam.services = {
+      login.u2fAuth = true;
+      sudo.u2fAuth = true;
+    };
   };
 
   services = {
