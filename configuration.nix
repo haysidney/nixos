@@ -309,6 +309,7 @@
       cool-retro-term
       cmatrix
       imagemagick
+      qrscan
       ffmpeg
       audacity
       ytfzf
