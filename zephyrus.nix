@@ -92,7 +92,6 @@ in
       brightnessctl
       linuxKernel.packages.linux_6_6.cpupower
       radeontop
-      solaar
     ];
     etc = {
       "asusd/ac_command" = {
