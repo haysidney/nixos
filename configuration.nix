@@ -54,6 +54,7 @@
     "L+ /home/sidney/.local/state/wireplumber     - sidney users - /persist/home/.local/state/wireplumber"
     "L+ /home/sidney/.password-store              - sidney users - /persist/home/.password-store"
     "L+ /home/sidney/.gitconfig                   - sidney users - /persist/home/.gitconfig"
+    "L+ /home/sidney/.runelite                       - sidney users - /persist/home/.runelite"
     "L+ /home/sidney/.steam                       - sidney users - /persist/home/.steam"
     "L+ /home/sidney/.mozilla                     - sidney users - /persist/home/.mozilla"
     "L+ /home/sidney/.mbsyncrc                    - sidney users - /persist/home/.mbsyncrc"
@@ -329,6 +330,7 @@
       asciiquarium-transparent
       antimicrox
       xivlauncher
+      runelite
       protonup-qt
       heroic
       ledger-live-desktop
