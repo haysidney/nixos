@@ -17,6 +17,7 @@
     "L+ /home/sidney/.config/btop                 - sidney users - /persist/home/.config/btop"
     "L+ /home/sidney/.config/Cider                - sidney users - /persist/home/.config/Cider"
     "L+ /home/sidney/.config/gtk-3.0              - sidney users - /persist/home/.config/gtk-3.0"
+    "L+ /home/sidney/.config/heroic               - sidney users - /persist/home/.config/heroic"
     "L+ /home/sidney/.config/1Password            - sidney users - /persist/home/.config/1Password"
     "L+ /home/sidney/.config/discord              - sidney users - /persist/home/.config/discord"
     "L+ /home/sidney/.config/GIMP                 - sidney users - /persist/home/.config/GIMP"
@@ -64,6 +65,7 @@
     "L+ /home/sidney/Desktop                      - sidney users - /persist/home/Desktop"
     "L+ /home/sidney/Documents                    - sidney users - /persist/home/Documents"
     "L+ /home/sidney/Downloads                    - sidney users - /persist/home/Downloads"
+    "L+ /home/sidney/Games                        - sidney users - /persist/home/Games"
     "L+ /home/sidney/Music                        - sidney users - /persist/home/Music"
     "L+ /home/sidney/Pictures                     - sidney users - /persist/home/Pictures"
     "L+ /home/sidney/Source                       - sidney users - /persist/home/Source"
@@ -327,6 +329,8 @@
       asciiquarium-transparent
       antimicrox
       xivlauncher
+      protonup-qt
+      heroic
       ledger-live-desktop
       (st.overrideAttrs (oldAttrs: rec {
         patches = [
@@ -350,6 +354,7 @@
     sessionVariables = {
        EDITOR = "vim";
        NIXPKGS_ALLOW_UNFREE = "1";
+       NIXPKGS_ALLOW_INSECURE = "1";
        XL_SECRET_PROVIDER = "FILE"; # For XIVLauncher
        NIXOS_CONFIG = "/persist/home/.config/nixos/configuration.nix";
        WWW_HOME = "https://lite.duckduckgo.com/lite";
