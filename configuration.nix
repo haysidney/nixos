@@ -44,7 +44,6 @@
     "L+ /home/sidney/.local/share/audacity        - sidney users - /persist/home/.local/share/audacity"
     "L+ /home/sidney/.local/share/bottles         - sidney users - /persist/home/.local/share/bottles"
     "L+ /home/sidney/.local/share/cool-retro-term - sidney users - /persist/home/.local/share/cool-retro-term"
-    "L+ /home/sidney/.local/share/flatpak         - sidney users - /persist/home/.local/share/flatpak"
     "L+ /home/sidney/.local/share/fonts           - sidney users - /run/current-system/sw/share/X11/fonts"
     "L+ /home/sidney/.local/share/mail            - sidney users - /persist/home/.local/share/mail"
     "L+ /home/sidney/.local/share/openttd         - sidney users - /persist/home/.local/share/openttd"
@@ -61,7 +60,6 @@
     "L+ /home/sidney/.pki                         - sidney users - /persist/home/.pki"
     "L+ /home/sidney/.ssh                         - sidney users - /persist/home/.ssh"
     "L+ /home/sidney/.surf                        - sidney users - /persist/home/.surf"
-    "L+ /home/sidney/.var                         - sidney users - /persist/home/.var"
     "L+ /home/sidney/.vim                         - sidney users - /persist/home/.vim"
     "L+ /home/sidney/Desktop                      - sidney users - /persist/home/Desktop"
     "L+ /home/sidney/Documents                    - sidney users - /persist/home/Documents"
@@ -73,6 +71,16 @@
     "L+ /home/sidney/Videos                       - sidney users - /persist/home/Videos"
     "L+ /home/sidney/.bash_history                - sidney users - /persist/home/.bash_history"
   ];
+  fileSystems."/home/sidney/.var" = {
+    device = "/persist/home/.var";
+    fsType = "none";
+    options = [ "bind" ];
+  };
+  fileSystems."/home/sidney/.local/share/flatpak" = {
+    device = "/persist/home/.local/share/flatpak";
+    fsType = "none";
+    options = [ "bind" ];
+  };
   environment = {
     localBinInPath = true;
     persistence."/persist/system" = {
