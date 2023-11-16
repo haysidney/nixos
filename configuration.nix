@@ -338,7 +338,6 @@
       asciiquarium-transparent
       antimicrox
       xivlauncher
-      runelite
       protonup-qt
       heroic
       ledger-live-desktop
@@ -667,6 +666,7 @@
         otps="ykman oath accounts code";
         ffotp=''ykman oath accounts code | grep "FFXIV" | awk '{print $NF}' '';
         rainfall="python3 /home/sidney/build/rainfall/source/rainfall.py";
+        runescape="env LUTRIS_SKIP_INIT=1 flatpak run net.lutris.Lutris lutris:rungameid/1";
         # LLM
         llminit="docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama";
         llmstart="docker start ollama";
