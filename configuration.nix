@@ -281,6 +281,7 @@
       htop
       btop
       tldr
+      bc
       pywal
       trash-cli
       rmtrash
