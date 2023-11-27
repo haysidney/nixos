@@ -305,6 +305,7 @@
       rar
       distrobox
       bottles
+      protontricks
       python312
       transmission_4-gtk
       tremc
