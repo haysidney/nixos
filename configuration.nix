@@ -379,36 +379,6 @@
     };
     overlays = [
       (final: prev: {
-        gamescope = prev.gamescope.overrideAttrs (old: {
-          src = prev.fetchFromGitHub {
-            owner = "ValveSoftware";
-            repo = "gamescope";
-            rev = "3.12.7";
-            sha256 = "5TjcRPtHyQ09cA/e1a/RrYXvdYMifF9o+9KbVUbtA0U=";
-            fetchSubmodules = true;
-          };
-          patches = [
-            (prev.fetchpatch {
-              url = "https://raw.githubusercontent.com/NixOS/nixpkgs/770f6182ac3084eb9ed836e1f34fce0595c905db/pkgs/applications/window-managers/gamescope/use-pkgconfig.patch";
-              sha256 = "sha256-BqP20qoVH47xT/Pn4P9V5wUvHK/AJivam0Xenr8AbGk=";
-            })
-            ./extras/gamescope-jovian.diff
-          ];
-          # We can't substitute the patch itself because substituteAll is itself a derivation, 
-          # so `placeholder "out"` ends up pointing to the wrong place
-          postPatch = ''
-            substituteInPlace src/reshade_effect_manager.cpp --replace "@out@" "$out"
-          '';
-          buildInputs = old.buildInputs ++ [
-            pkgs.gbenchmark
-            pkgs.glm
-#            pkgs.pipewire
-#            pkgs.hwdata
-          ];
-          postInstall = ''
-            mkdir -p $out/share/gamescope/reshade
-          '';
-        });
         pywal = prev.pywal.overrideAttrs (old: {
           src = prev.fetchFromGitHub {
             owner = "dylanaraps";
