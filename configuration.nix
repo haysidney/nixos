@@ -15,7 +15,6 @@
     "L+ /home/sidney/.config/antimicrox           - sidney users - /persist/home/.config/antimicrox"
     "L+ /home/sidney/.config/htop                 - sidney users - /persist/home/.config/htop"
     "L+ /home/sidney/.config/btop                 - sidney users - /persist/home/.config/btop"
-    "L+ /home/sidney/.config/Cider                - sidney users - /persist/home/.config/Cider"
     "L+ /home/sidney/.config/gtk-3.0              - sidney users - /persist/home/.config/gtk-3.0"
     "L+ /home/sidney/.config/heroic               - sidney users - /persist/home/.config/heroic"
     "L+ /home/sidney/.config/1Password            - sidney users - /persist/home/.config/1Password"
